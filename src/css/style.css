@@ -185,13 +185,7 @@
       #8b5cf6
     );
   }
-  [data-reveal="down"] {
-    transform: translate3d(0, -70px, 0) scale(0.97);
-  }
 
-  [data-reveal="down"].is-visible {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
   .site-header {
     @apply border-[var(--color-border)];
     background: color-mix(in srgb, var(--color-surface-solid) 78%, transparent);
@@ -380,6 +374,10 @@
     transform: translate3d(0, 70px, 0) scale(0.97);
   }
 
+  [data-reveal="down"] {
+    transform: translate3d(0, -70px, 0) scale(0.97);
+  }
+
   [data-reveal].is-visible {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
@@ -469,22 +467,6 @@
 }
 
 @media (max-width: 767px) {
-  .site-body,
-  .site-header,
-  .glass-card,
-  .code-block,
-  .grid-background,
-  .ambient-glow,
-  .mobile-nav-item,
-  .mobile-bottom-nav ul,
-  .theme-button,
-  .nav-link,
-  .form-input,
-  .primary-button,
-  .whatsapp-button {
-    transition: none !important;
-  }
-
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
