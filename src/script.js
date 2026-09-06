@@ -134,6 +134,9 @@ const setupPageEntrance = () => {
   ).matches;
   if (reducedMotion) return;
 
+  const heroContent = elements.hero?.querySelector('[data-reveal="right"]');
+  const heroImage = elements.hero?.querySelector('[data-reveal="left"]');
+
   if (elements.header) {
     elements.header.style.opacity = "0";
     elements.header.style.transform = "translateY(-100px)";
@@ -141,16 +144,16 @@ const setupPageEntrance = () => {
       "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
   }
 
-  const heroContent = elements.hero?.querySelector('[data-reveal="right"]');
   if (heroContent) {
+    heroContent.classList.add("is-visible");
     heroContent.style.opacity = "0";
     heroContent.style.transform = "translate3d(150px, 0, 0) scale(0.9)";
     heroContent.style.transition =
       "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
   }
 
-  const heroImage = elements.hero?.querySelector('[data-reveal="left"]');
   if (heroImage) {
+    heroImage.classList.add("is-visible");
     heroImage.style.opacity = "0";
     heroImage.style.transform = "translate3d(-150px, 0, 0) scale(0.9)";
     heroImage.style.transition =
