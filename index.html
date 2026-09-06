@@ -14,8 +14,8 @@
       content="م. إيهاب الكومي - Software Engineer ومدرب برمجة وذكاء اصطناعي. تعلم JavaScript والبرمجة من خلال مشاريع عملية."
     />
 
-    <script type="module" crossorigin src="/Ehab-elkomy/assets/index-aMVM6PLZ.js"></script>
-    <link rel="stylesheet" crossorigin href="/Ehab-elkomy/assets/index-BYKaj9rN.css">
+    <script type="module" crossorigin src="/Ehab-elkomy/assets/index-Co31HKed.js"></script>
+    <link rel="stylesheet" crossorigin href="/Ehab-elkomy/assets/index-B78keCm4.css">
   </head>
 
   <body class="site-body min-h-screen overflow-x-hidden pb-28 lg:pb-0">
@@ -54,29 +54,72 @@
         </a>
 
         <nav
-          class="hidden items-center gap-1 lg:flex"
-          aria-label="القائمة الرئيسية"
+          class="mobile-bottom-nav fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden"
+          aria-label="قائمة التنقل السفلية"
+          style="width: auto; max-width: 95vw"
         >
-          <ul class="flex items-center gap-1">
-            <li><a href="#home" data-nav-link class="nav-link">الرئيسية</a></li>
+          <ul
+            class="flex items-center justify-center gap-2 bg-[var(--color-surface-solid)]/95 backdrop-blur-xl border border-[var(--color-border)] rounded-full shadow-2xl px-4 py-2"
+          >
             <li>
-              <a href="#about" data-nav-link class="nav-link">عن المهندس</a>
-            </li>
-            <li>
-              <a href="#vibe-coding" data-nav-link class="nav-link"
-                >Vibe Coding</a
+              <a
+                href="#home"
+                class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
+                data-mobile-nav-link
+                aria-label="الرئيسية"
               >
+                <svg class="size-6 pointer-events-none" aria-hidden="true">
+                  <use href="./sprite.svg#home"></use>
+                </svg>
+              </a>
             </li>
             <li>
-              <a href="#deep-javascript" data-nav-link class="nav-link"
-                >Deep Dive</a
+              <a
+                href="#about"
+                class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
+                data-mobile-nav-link
+                aria-label="عن المهندس"
               >
+                <svg class="size-6 pointer-events-none" aria-hidden="true">
+                  <use href="./sprite.svg#user"></use>
+                </svg>
+              </a>
             </li>
             <li>
-              <a href="#features" data-nav-link class="nav-link">المميزات</a>
+              <a
+                href="#javascript"
+                class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
+                data-mobile-nav-link
+                aria-label="جافاسكريبت"
+              >
+                <svg class="size-6 pointer-events-none" aria-hidden="true">
+                  <use href="./sprite.svg#code"></use>
+                </svg>
+              </a>
             </li>
             <li>
-              <a href="#contact" data-nav-link class="nav-link">تواصل معنا</a>
+              <a
+                href="#vibe-coding"
+                class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-fuchsia-500 hover:bg-fuchsia-500/10 active:scale-90"
+                data-mobile-nav-link
+                aria-label="فايب كودينج"
+              >
+                <svg class="size-6 pointer-events-none" aria-hidden="true">
+                  <use href="./sprite.svg#sparkles"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
+                data-mobile-nav-link
+                aria-label="تواصل معنا"
+              >
+                <svg class="size-6 pointer-events-none" aria-hidden="true">
+                  <use href="./sprite.svg#message"></use>
+                </svg>
+              </a>
             </li>
           </ul>
         </nav>
@@ -86,7 +129,7 @@
             id="theme-toggle"
             type="button"
             aria-label="تفعيل الوضع الفاتح"
-            class="theme-button relative flex size-12 items-center justify-center overflow-hidden rounded-2xl"
+            class="theme-button relative flex size-12 items-center justify-center overflow-hidden rounded-2xl cursor-pointer"
           >
             <svg
               id="theme-icon-sun"
