@@ -1,4 +1,4 @@
-# م. إيهاب الكومي — Programming & AI Platform
+# م. إيهاب الكومي — Programming & AI SUP-Platform
 
 <p align="center">
   <img src="public/instructor.jpg" alt="Eng. Ehab El-Komy" width="140" style="border-radius: 999px;" />
