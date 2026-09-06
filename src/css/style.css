@@ -80,6 +80,12 @@
     background: rgba(56, 189, 248, 0.25);
     color: var(--color-text);
   }
+
+  .theme-changing *,
+  .theme-changing *::before,
+  .theme-changing *::after {
+    transition: none !important;
+  }
 }
 
 @layer components {
@@ -280,7 +286,7 @@
   }
 
   .nav-link {
-    @apply rounded-xl px-4 py-2.5 text-sm font-semibold text-[var(--color-text-soft)] transition hover:bg-sky-500/10 hover:text-sky-500;
+    @apply rounded-xl px-4 py-2.5 text-sm font-semibold text-[var(--color-text-soft)] transition-colors duration-300 hover:bg-sky-500/10 hover:text-sky-500;
   }
 
   .mobile-nav-item {
@@ -291,12 +297,13 @@
   .mobile-nav-item.active {
     @apply text-sky-500 bg-sky-500/10;
   }
+
   .mobile-nav-item svg {
     @apply size-5;
   }
 
   .form-input {
-    @apply w-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-soft)] px-4 py-3.5 text-sm text-[var(--color-text)] outline-none transition placeholder:text-[var(--color-text-muted)] focus:border-sky-500/50 focus:ring-4 focus:ring-sky-500/10;
+    @apply w-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-soft)] px-4 py-3.5 text-sm text-[var(--color-text)] outline-none transition-colors duration-300 placeholder:text-[var(--color-text-muted)] focus:border-sky-500/50 focus:ring-4 focus:ring-sky-500/10;
   }
 
   .code-block {
@@ -391,19 +398,19 @@
     @apply fixed rounded-full pointer-events-none hidden lg:block;
     top: var(--mouse-y, 50vh);
     left: var(--mouse-x, 50vw);
-    width: 380px;
-    height: 380px;
+    width: 300px;
+    height: 300px;
     transform: translate3d(-50%, -50%, 0);
     background: radial-gradient(
       circle,
-      rgba(56, 189, 248, 0.12) 0%,
-      rgba(37, 99, 235, 0.05) 35%,
+      rgba(56, 189, 248, 0.15) 0%,
+      rgba(37, 99, 235, 0.07) 35%,
       transparent 70%
     );
-    filter: blur(8px);
+    filter: blur(20px);
     transition:
-      left 0.12s ease-out,
-      top 0.12s ease-out;
+      left 0.3s ease-out,
+      top 0.3s ease-out;
     will-change: left, top;
     z-index: 1;
   }
@@ -411,27 +418,14 @@
   .light [data-cursor-glow] {
     background: radial-gradient(
       circle,
-      rgba(37, 99, 235, 0.1) 0%,
-      rgba(14, 165, 233, 0.04) 35%,
+      rgba(37, 99, 235, 0.12) 0%,
+      rgba(14, 165, 233, 0.05) 35%,
       transparent 70%
     );
   }
 
   [data-cursor-dot] {
-    @apply fixed rounded-full pointer-events-none hidden lg:block;
-    top: var(--mouse-y, 50vh);
-    left: var(--mouse-x, 50vw);
-    width: 10px;
-    height: 10px;
-    border: 2px solid var(--color-primary);
-    transform: translate3d(-50%, -50%, 0);
-    box-shadow:
-      0 0 15px rgba(56, 189, 248, 0.55),
-      0 0 35px rgba(56, 189, 248, 0.2);
-    z-index: 9999;
-    transition:
-      left 0.08s ease-out,
-      top 0.08s ease-out;
+    display: none !important;
   }
 
   @keyframes float {
@@ -469,20 +463,68 @@
 }
 
 @media (max-width: 767px) {
-  [data-reveal] {
-    transform: translate3d(0, 30px, 0) scale(0.98);
+  .site-body,
+  .site-header,
+  .glass-card,
+  .code-block,
+  .grid-background,
+  .ambient-glow,
+  .mobile-nav-item,
+  .mobile-bottom-nav ul,
+  .theme-button,
+  .nav-link,
+  .form-input,
+  .primary-button,
+  .whatsapp-button {
+    transition: none !important;
   }
 
-  [data-reveal="right"] {
-    transform: translate3d(60px, 0, 0) scale(0.98);
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  [data-reveal="left"] {
-    transform: translate3d(-60px, 0, 0) scale(0.98);
+  .glass-card {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
   }
 
+  .mobile-bottom-nav ul {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .site-header {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .site-header,
+  .mobile-bottom-nav ul,
+  .backdrop-blur-xl,
+  .backdrop-blur-md {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .mobile-bottom-nav ul {
+    background: var(--color-surface-solid) !important;
+  }
+
+  .site-header {
+    background: var(--color-surface-solid) !important;
+  }
+
+  .mobile-nav-item:hover,
+  .mobile-nav-item.active {
+    transform: none !important;
+  }
+
+  [data-reveal],
+  [data-reveal="right"],
+  [data-reveal="left"],
   [data-reveal="up"] {
-    transform: translate3d(0, 50px, 0) scale(0.98);
+    transform: translate3d(0, 30px, 0) scale(0.98);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   [data-reveal].is-visible,
@@ -690,7 +732,7 @@
   }
 
   #back-to-top,
-  a[aria-label="تواصل عبر واتساب"] {
+  a[aria-label="Contact via WhatsApp"] {
     @apply size-10 bottom-20;
   }
 
@@ -698,12 +740,12 @@
     @apply left-3;
   }
 
-  a[aria-label="تواصل عبر واتساب"] {
+  a[aria-label="Contact via WhatsApp"] {
     @apply right-3;
   }
 
   #back-to-top svg,
-  a[aria-label="تواصل عبر واتساب"] svg {
+  a[aria-label="Contact via WhatsApp"] svg {
     @apply size-4;
   }
 
@@ -765,6 +807,18 @@
   #features .grid {
     @apply grid-cols-1;
   }
+
+  .grid-background {
+    display: none !important;
+  }
+
+  .ambient-glow {
+    opacity: 0.05 !important;
+  }
+
+  .code-block {
+    box-shadow: none !important;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -818,40 +872,5 @@
   .theme-icon {
     transition: opacity 0.15s ease;
     transform: none !important;
-  }
-}
-@layer utilities {
-  [data-cursor-glow] {
-    @apply fixed rounded-full pointer-events-none hidden lg:block;
-    top: var(--mouse-y, 50vh);
-    left: var(--mouse-x, 50vw);
-    width: 300px;
-    height: 300px;
-    transform: translate3d(-50%, -50%, 0);
-    background: radial-gradient(
-      circle,
-      rgba(56, 189, 248, 0.15) 0%,
-      rgba(37, 99, 235, 0.07) 35%,
-      transparent 70%
-    );
-    filter: blur(20px);
-    transition:
-      left 0.3s ease-out,
-      top 0.3s ease-out;
-    will-change: left, top;
-    z-index: 1;
-  }
-
-  .light [data-cursor-glow] {
-    background: radial-gradient(
-      circle,
-      rgba(37, 99, 235, 0.12) 0%,
-      rgba(14, 165, 233, 0.05) 35%,
-      transparent 70%
-    );
-  }
-
-  [data-cursor-dot] {
-    display: none !important; /* Hide the dot completely */
   }
 }

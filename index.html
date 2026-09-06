@@ -33,7 +33,7 @@
       class="site-header fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl"
     >
       <div
-        class="mx-auto flex min-h-20 max-w-7xl lg:py-8 xl: xl:py-0 items-center justify-between gap-5 px-4 sm:px-6 lg:px-8 flex-wrap"
+        class="mx-auto flex min-h-20 max-w-7xl lg:py-8 xl:py-0 items-center justify-between gap-5 px-4 sm:px-6 lg:px-8 flex-wrap"
       >
         <a href="#home" class="group flex items-center gap-3" data-magnetic>
           <span
@@ -53,72 +53,29 @@
         </a>
 
         <nav
-          class="mobile-bottom-nav fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden"
-          aria-label="قائمة التنقل السفلية"
-          style="width: auto; max-width: 95vw"
+          class="hidden items-center gap-1 lg:flex"
+          aria-label="Main navigation"
         >
-          <ul
-            class="flex items-center justify-center gap-2 bg-[var(--color-surface-solid)]/95 backdrop-blur-xl border border-[var(--color-border)] rounded-full shadow-2xl px-4 py-2"
-          >
+          <ul class="flex items-center gap-1">
+            <li><a href="#home" data-nav-link class="nav-link">الرئيسية</a></li>
             <li>
-              <a
-                href="#home"
-                class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
-                data-mobile-nav-link
-                aria-label="الرئيسية"
-              >
-                <svg class="size-6 pointer-events-none" aria-hidden="true">
-                  <use href="./sprite.svg#home"></use>
-                </svg>
-              </a>
+              <a href="#about" data-nav-link class="nav-link">عن المهندس</a>
             </li>
             <li>
-              <a
-                href="#about"
-                class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
-                data-mobile-nav-link
-                aria-label="عن المهندس"
+              <a href="#vibe-coding" data-nav-link class="nav-link"
+                >Vibe Coding</a
               >
-                <svg class="size-6 pointer-events-none" aria-hidden="true">
-                  <use href="./sprite.svg#user"></use>
-                </svg>
-              </a>
             </li>
             <li>
-              <a
-                href="#javascript"
-                class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
-                data-mobile-nav-link
-                aria-label="جافاسكريبت"
+              <a href="#deep-javascript" data-nav-link class="nav-link"
+                >Deep Dive</a
               >
-                <svg class="size-6 pointer-events-none" aria-hidden="true">
-                  <use href="./sprite.svg#code"></use>
-                </svg>
-              </a>
             </li>
             <li>
-              <a
-                href="#vibe-coding"
-                class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-fuchsia-500 hover:bg-fuchsia-500/10 active:scale-90"
-                data-mobile-nav-link
-                aria-label="فايب كودينج"
-              >
-                <svg class="size-6 pointer-events-none" aria-hidden="true">
-                  <use href="./sprite.svg#sparkles"></use>
-                </svg>
-              </a>
+              <a href="#features" data-nav-link class="nav-link">المميزات</a>
             </li>
             <li>
-              <a
-                href="#contact"
-                class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
-                data-mobile-nav-link
-                aria-label="تواصل معنا"
-              >
-                <svg class="size-6 pointer-events-none" aria-hidden="true">
-                  <use href="./sprite.svg#message"></use>
-                </svg>
-              </a>
+              <a href="#contact" data-nav-link class="nav-link">تواصل معنا</a>
             </li>
           </ul>
         </nav>
@@ -127,7 +84,7 @@
           <button
             id="theme-toggle"
             type="button"
-            aria-label="تفعيل الوضع الفاتح"
+            aria-label="Toggle theme"
             class="theme-button relative flex size-12 items-center justify-center overflow-hidden rounded-2xl cursor-pointer"
           >
             <svg
@@ -161,7 +118,7 @@
 
     <nav
       class="mobile-bottom-nav fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden"
-      aria-label="قائمة التنقل السفلية"
+      aria-label="Mobile navigation"
       style="width: auto; max-width: 95vw"
     >
       <ul
@@ -170,9 +127,9 @@
         <li>
           <a
             href="#home"
-            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-all duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
+            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
             data-mobile-nav-link
-            aria-label="الرئيسية"
+            aria-label="Home"
           >
             <svg class="size-6 pointer-events-none" aria-hidden="true">
               <use href="./sprite.svg#home"></use>
@@ -182,9 +139,9 @@
         <li>
           <a
             href="#about"
-            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-all duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
+            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
             data-mobile-nav-link
-            aria-label="عن المهندس"
+            aria-label="About"
           >
             <svg class="size-6 pointer-events-none" aria-hidden="true">
               <use href="./sprite.svg#user"></use>
@@ -194,9 +151,9 @@
         <li>
           <a
             href="#javascript"
-            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-all duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
+            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
             data-mobile-nav-link
-            aria-label="جافاسكريبت"
+            aria-label="JavaScript"
           >
             <svg class="size-6 pointer-events-none" aria-hidden="true">
               <use href="./sprite.svg#code"></use>
@@ -206,9 +163,9 @@
         <li>
           <a
             href="#vibe-coding"
-            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-all duration-300 hover:text-fuchsia-500 hover:bg-fuchsia-500/10 active:scale-90"
+            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-fuchsia-500 hover:bg-fuchsia-500/10 active:scale-90"
             data-mobile-nav-link
-            aria-label="فايب كودينج"
+            aria-label="Vibe Coding"
           >
             <svg class="size-6 pointer-events-none" aria-hidden="true">
               <use href="./sprite.svg#sparkles"></use>
@@ -218,9 +175,9 @@
         <li>
           <a
             href="#contact"
-            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-all duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
+            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-colors duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
             data-mobile-nav-link
-            aria-label="تواصل معنا"
+            aria-label="Contact"
           >
             <svg class="size-6 pointer-events-none" aria-hidden="true">
               <use href="./sprite.svg#message"></use>
@@ -234,7 +191,7 @@
       <section
         id="home"
         class="relative isolate flex min-h-screen items-center overflow-hidden pt-24"
-        aria-label="الرئيسية"
+        aria-label="Home"
       >
         <div
           class="grid-background pointer-events-none absolute inset-0 -z-10"
@@ -382,7 +339,7 @@
       <section
         id="about"
         class="relative overflow-hidden py-24 sm:py-32"
-        aria-label="عن المهندس"
+        aria-label="About"
       >
         <div class="mx-auto max-w-7xl px-5 sm:px-8">
           <div data-reveal="right" class="mx-auto max-w-3xl text-center">
@@ -464,7 +421,7 @@
       <section
         id="javascript"
         class="relative overflow-hidden py-24 sm:py-32"
-        aria-label="جوه الجافاسكريبت"
+        aria-label="JavaScript"
       >
         <div class="mx-auto max-w-7xl px-5 sm:px-8">
           <div class="grid items-center gap-14 lg:grid-cols-2">
@@ -576,7 +533,7 @@
       <section
         id="vibe-coding"
         class="relative overflow-hidden py-24 sm:py-32"
-        aria-label="فايب كودينج"
+        aria-label="Vibe Coding"
       >
         <div class="mx-auto max-w-7xl px-5 sm:px-8">
           <div class="grid items-center gap-14 lg:grid-cols-2">
@@ -597,9 +554,9 @@
                 AI بذكاء، تفهم الـ code، تصلح الـ bugs، وتبني أنظمة حقيقية.
               </p>
 
-              <ul class="mt-8 space-y-4 list-none text-center">
+              <ul class="mt-8 space-y-4 list-none text-center max-sm:mx-auto max-sm:w-[90%]">
                 <li
-                  class="flex items-start gap-4 justify-between lg:justify-start"
+                  class="flex items-center gap-4 justify-between lg:justify-start"
                 >
                   <span
                     class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-fuchsia-500/10 text-fuchsia-500"
@@ -616,7 +573,7 @@
                   </div>
                 </li>
                 <li
-                  class="flex items-start gap-4 justify-between lg:justify-start"
+                  class="flex items-center gap-4 justify-between lg:justify-start"
                 >
                   <span
                     class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-fuchsia-500/10 text-fuchsia-500"
@@ -633,7 +590,7 @@
                   </div>
                 </li>
                 <li
-                  class="flex items-start gap-4 justify-between lg:justify-start"
+                  class="flex items-center gap-4 justify-between lg:justify-start"
                 >
                   <span
                     class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-fuchsia-500/10 text-fuchsia-500"
@@ -707,7 +664,7 @@
       <section
         id="deep-javascript"
         class="relative overflow-hidden py-24 sm:py-32"
-        aria-label="ديب دايڤ جافاسكريبت"
+        aria-label="Deep JavaScript"
       >
         <div class="mx-auto max-w-7xl px-5 sm:px-8">
           <div
@@ -840,7 +797,7 @@
       <section
         id="curriculum"
         class="relative overflow-hidden py-24 sm:py-32"
-        aria-label="المنهج"
+        aria-label="Curriculum"
       >
         <div class="mx-auto max-w-7xl px-5 sm:px-8">
           <div data-reveal="right" class="mx-auto max-w-3xl text-center">
@@ -1073,7 +1030,7 @@
       <section
         id="features"
         class="relative overflow-hidden py-24 sm:py-32"
-        aria-label="المميزات"
+        aria-label="Features"
       >
         <div class="mx-auto max-w-7xl px-5 sm:px-8">
           <div data-reveal="right" class="mx-auto max-w-3xl text-center">
@@ -1171,7 +1128,7 @@
       <section
         id="contact"
         class="relative overflow-hidden py-24 sm:py-32"
-        aria-label="تواصل معنا"
+        aria-label="Contact"
       >
         <div class="mx-auto max-w-7xl px-5 sm:px-8">
           <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
@@ -1340,7 +1297,7 @@
         <a
           href="#home"
           class="flex size-11 items-center justify-center rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] text-sky-500 transition hover:-translate-y-1 hover:border-sky-500/30"
-          aria-label="العودة للأعلى"
+          aria-label="Back to top"
         >
           <svg class="size-5" aria-hidden="true">
             <use href="./sprite.svg#arrow-up"></use>
@@ -1352,7 +1309,7 @@
     <button
       id="back-to-top"
       type="button"
-      aria-label="العودة للأعلى"
+      aria-label="Back to top"
       class="fixed bottom-24 left-4 z-40 flex size-12 items-center justify-center rounded-2xl border border-[var(--color-border)] bg-slate-900/90 text-sky-400 shadow-2xl backdrop-blur-xl transition duration-300 hover:-translate-y-1 lg:bottom-6 lg:left-6 lg:size-14"
     >
       <svg class="size-5" aria-hidden="true">
@@ -1365,7 +1322,7 @@
       target="_blank"
       rel="noopener noreferrer"
       class="fixed bottom-24 right-4 z-40 flex size-12 items-center justify-center rounded-2xl bg-green-500 text-white shadow-2xl transition duration-300 hover:-translate-y-1 hover:bg-green-600 lg:bottom-24 lg:right-6 lg:size-14"
-      aria-label="تواصل عبر واتساب"
+      aria-label="Contact via WhatsApp"
     >
       <svg class="size-5" aria-hidden="true">
         <use href="./sprite.svg#whatsapp"></use>

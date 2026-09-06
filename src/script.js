@@ -20,6 +20,7 @@ const elements = {
 
 const isLightMode = () => elements.html.classList.contains("light");
 const isDesktop = () => window.innerWidth >= 1024;
+const isMobile = () => window.innerWidth < 768;
 
 const updateThemeUI = () => {
   const light = isLightMode();
@@ -27,17 +28,24 @@ const updateThemeUI = () => {
   elements.themeIconMoon?.classList.toggle("theme-icon-active", !light);
   elements.themeToggle?.setAttribute(
     "aria-label",
-    light ? "تفعيل الوضع الداكن" : "تفعيل الوضع الفاتح",
+    light ? "Toggle dark mode" : "Toggle light mode",
   );
   elements.html.style.colorScheme = light ? "light" : "dark";
 };
 
 const applyTheme = (theme) => {
   const isLight = theme === "light";
+  elements.html.classList.add("theme-changing");
   elements.html.classList.toggle("light", isLight);
   elements.html.classList.toggle("dark", !isLight);
   localStorage.setItem("theme", isLight ? "light" : "dark");
   updateThemeUI();
+
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      elements.html.classList.remove("theme-changing");
+    }, 50);
+  });
 };
 
 const setupTheme = () => {
@@ -61,7 +69,6 @@ const setupCursorEffects = () => {
   let currentY = window.innerHeight / 2;
 
   const render = () => {
-    // Smooth follow
     currentX += (mouseX - currentX) * 0.15;
     currentY += (mouseY - currentY) * 0.15;
 
@@ -87,15 +94,11 @@ const setupCursorEffects = () => {
     { passive: true },
   );
 
-  // Start animation loop
   const startLoop = () => {
     render();
     requestAnimationFrame(startLoop);
   };
   startLoop();
-
-  // Don't hide cursor - keep it visible
-  // Just the glow follows behind
 };
 
 const setupMagneticElements = () => {
@@ -104,7 +107,7 @@ const setupMagneticElements = () => {
   ).matches;
   const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
 
-  if (reducedMotion || coarsePointer) return;
+  if (reducedMotion || coarsePointer || isMobile()) return;
 
   elements.magneticElements.forEach((element) => {
     element.style.setProperty("--magnetic-x", "0px");
@@ -131,7 +134,6 @@ const setupPageEntrance = () => {
   ).matches;
   if (reducedMotion) return;
 
-  // Header from top - 3 seconds duration
   if (elements.header) {
     elements.header.style.opacity = "0";
     elements.header.style.transform = "translateY(-100px)";
@@ -139,7 +141,6 @@ const setupPageEntrance = () => {
       "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
   }
 
-  // Hero content from right - 3 seconds duration
   const heroContent = elements.hero?.querySelector('[data-reveal="right"]');
   if (heroContent) {
     heroContent.style.opacity = "0";
@@ -148,7 +149,6 @@ const setupPageEntrance = () => {
       "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
   }
 
-  // Hero image from left - 3 seconds duration
   const heroImage = elements.hero?.querySelector('[data-reveal="left"]');
   if (heroImage) {
     heroImage.style.opacity = "0";
@@ -157,9 +157,7 @@ const setupPageEntrance = () => {
       "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
   }
 
-  // Trigger animations with delays
   requestAnimationFrame(() => {
-    // Header animation - starts immediately
     if (elements.header) {
       setTimeout(() => {
         elements.header.style.opacity = "1";
@@ -167,7 +165,6 @@ const setupPageEntrance = () => {
       }, 100);
     }
 
-    // Hero content animation - starts after 500ms
     if (heroContent) {
       setTimeout(() => {
         heroContent.style.opacity = "1";
@@ -175,13 +172,30 @@ const setupPageEntrance = () => {
       }, 500);
     }
 
-    // Hero image animation - starts after 800ms
     if (heroImage) {
       setTimeout(() => {
         heroImage.style.opacity = "1";
         heroImage.style.transform = "translate3d(0, 0, 0) scale(1)";
       }, 800);
     }
+
+    setTimeout(() => {
+      if (elements.header) {
+        elements.header.style.opacity = "";
+        elements.header.style.transform = "";
+        elements.header.style.transition = "";
+      }
+      if (heroContent) {
+        heroContent.style.opacity = "";
+        heroContent.style.transform = "";
+        heroContent.style.transition = "";
+      }
+      if (heroImage) {
+        heroImage.style.opacity = "";
+        heroImage.style.transform = "";
+        heroImage.style.transition = "";
+      }
+    }, 4000);
   });
 };
 
@@ -209,7 +223,7 @@ const setupRevealObserver = () => {
   );
 
   elements.revealElements.forEach((element, index) => {
-    if (element.closest("#home")) return; // Hero elements already animated
+    if (element.closest("#home")) return;
     element.style.transitionDelay = `${Math.min(index % 5, 4) * 70}ms`;
     observer.observe(element);
   });
