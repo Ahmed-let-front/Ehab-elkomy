@@ -132,10 +132,23 @@ const setupPageEntrance = () => {
   const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
-  if (reducedMotion) return;
 
-  const heroContent = elements.hero?.querySelector('[data-reveal="right"]');
-  const heroImage = elements.hero?.querySelector('[data-reveal="left"]');
+  const heroElements = elements.hero
+    ? elements.hero.querySelectorAll("[data-reveal]")
+    : [];
+
+  if (reducedMotion) {
+    if (elements.header) {
+      elements.header.style.opacity = "1";
+      elements.header.style.transform = "none";
+    }
+    heroElements.forEach((el) => {
+      el.classList.add("is-visible");
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    });
+    return;
+  }
 
   if (elements.header) {
     elements.header.style.opacity = "0";
@@ -144,21 +157,14 @@ const setupPageEntrance = () => {
       "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
   }
 
-  if (heroContent) {
-    heroContent.classList.add("is-visible");
-    heroContent.style.opacity = "0";
-    heroContent.style.transform = "translate3d(150px, 0, 0) scale(0.9)";
-    heroContent.style.transition =
+  heroElements.forEach((element, index) => {
+    element.classList.add("is-visible");
+    element.style.opacity = "0";
+    element.style.transform = "translate3d(0, 50px, 0) scale(0.95)";
+    element.style.transition =
       "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
-  }
-
-  if (heroImage) {
-    heroImage.classList.add("is-visible");
-    heroImage.style.opacity = "0";
-    heroImage.style.transform = "translate3d(-150px, 0, 0) scale(0.9)";
-    heroImage.style.transition =
-      "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
-  }
+    element.style.transitionDelay = `${index * 150}ms`;
+  });
 
   requestAnimationFrame(() => {
     if (elements.header) {
@@ -168,19 +174,12 @@ const setupPageEntrance = () => {
       }, 100);
     }
 
-    if (heroContent) {
+    heroElements.forEach((element) => {
       setTimeout(() => {
-        heroContent.style.opacity = "1";
-        heroContent.style.transform = "translate3d(0, 0, 0) scale(1)";
-      }, 500);
-    }
-
-    if (heroImage) {
-      setTimeout(() => {
-        heroImage.style.opacity = "1";
-        heroImage.style.transform = "translate3d(0, 0, 0) scale(1)";
-      }, 800);
-    }
+        element.style.opacity = "1";
+        element.style.transform = "translate3d(0, 0, 0) scale(1)";
+      }, 300);
+    });
 
     setTimeout(() => {
       if (elements.header) {
@@ -188,16 +187,12 @@ const setupPageEntrance = () => {
         elements.header.style.transform = "";
         elements.header.style.transition = "";
       }
-      if (heroContent) {
-        heroContent.style.opacity = "";
-        heroContent.style.transform = "";
-        heroContent.style.transition = "";
-      }
-      if (heroImage) {
-        heroImage.style.opacity = "";
-        heroImage.style.transform = "";
-        heroImage.style.transition = "";
-      }
+      heroElements.forEach((element) => {
+        element.style.opacity = "";
+        element.style.transform = "";
+        element.style.transition = "";
+        element.style.transitionDelay = "";
+      });
     }, 4000);
   });
 };
