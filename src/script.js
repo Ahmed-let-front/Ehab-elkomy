@@ -23,8 +23,8 @@ const isDesktop = () => window.innerWidth >= 1024;
 
 const updateThemeUI = () => {
   const light = isLightMode();
-  elements.themeIconSun?.classList.toggle("hidden", !light);
-  elements.themeIconMoon?.classList.toggle("hidden", light);
+  elements.themeIconSun?.classList.toggle("theme-icon-active", light);
+  elements.themeIconMoon?.classList.toggle("theme-icon-active", !light);
   elements.themeToggle?.setAttribute(
     "aria-label",
     light ? "تفعيل الوضع الداكن" : "تفعيل الوضع الفاتح",

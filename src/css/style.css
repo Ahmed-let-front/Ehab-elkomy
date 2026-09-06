@@ -6,7 +6,6 @@
   --font-sans: "Cairo Variable", "Cairo", sans-serif;
   --font-mono: "JetBrains Mono Variable", "JetBrains Mono", monospace;
 
-  /* Dark Theme Colors */
   --color-bg: #050810;
   --color-bg-soft: #080d18;
   --color-surface: rgba(20, 18, 32, 0.92);
@@ -93,6 +92,9 @@
         transparent 35%
       ),
       var(--color-bg);
+    transition:
+      background-color 0.4s ease,
+      color 0.4s ease;
   }
 
   .light .site-body {
@@ -131,6 +133,7 @@
       black 70%,
       transparent 100%
     );
+    transition: background-image 0.4s ease;
   }
 
   .light .grid-background {
@@ -150,6 +153,7 @@
     height: 420px;
     filter: blur(100px);
     opacity: 0.12;
+    transition: opacity 0.4s ease;
   }
 
   .ambient-glow-one {
@@ -180,6 +184,10 @@
     @apply border-[var(--color-border)];
     background: color-mix(in srgb, var(--color-surface-solid) 78%, transparent);
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+    transition:
+      background-color 0.4s ease,
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
   }
 
   .light .site-header {
@@ -189,6 +197,10 @@
   .glass-card {
     @apply border-[var(--color-border)] shadow-[var(--shadow-card)];
     background: var(--color-surface);
+    transition:
+      background-color 0.4s ease,
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
   }
 
   .glass-card:hover {
@@ -210,12 +222,27 @@
     transition:
       transform 0.3s ease,
       background-color 0.3s ease,
-      border-color 0.3s ease;
+      border-color 0.3s ease,
+      color 0.3s ease;
   }
 
   .theme-button:hover {
     @apply border-[var(--color-border-strong)];
     transform: rotate(8deg) scale(1.05);
+  }
+
+  .theme-icon {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.5) rotate(-90deg);
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .theme-icon-active {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
   }
 
   .primary-button {
@@ -228,7 +255,8 @@
     box-shadow: 0 12px 30px rgba(14, 165, 233, 0.22);
     transition:
       transform 0.3s ease,
-      box-shadow 0.3s ease;
+      box-shadow 0.3s ease,
+      background-image 0.4s ease;
   }
 
   .primary-button:hover {
@@ -276,6 +304,9 @@
     @apply border-[rgba(148,163,184,0.14)] font-mono;
     background: #070b13;
     color: #dbeafe;
+    transition:
+      background-color 0.4s ease,
+      color 0.4s ease;
   }
 
   .light .code-block {
@@ -283,7 +314,6 @@
     color: #dbeafe;
   }
 
-  /* Code Syntax Highlighting */
   .code-keyword {
     @apply text-sky-400 font-semibold;
   }
@@ -439,14 +469,21 @@
   }
 }
 
-/* Mobile - 320px to 767px */
 @media (max-width: 767px) {
-  /* All animations from bottom only */
-  [data-reveal],
-  [data-reveal="right"],
-  [data-reveal="left"],
-  [data-reveal="up"] {
+  [data-reveal] {
     transform: translate3d(0, 30px, 0) scale(0.98);
+  }
+
+  [data-reveal="right"] {
+    transform: translate3d(60px, 0, 0) scale(0.98);
+  }
+
+  [data-reveal="left"] {
+    transform: translate3d(-60px, 0, 0) scale(0.98);
+  }
+
+  [data-reveal="up"] {
+    transform: translate3d(0, 50px, 0) scale(0.98);
   }
 
   [data-reveal].is-visible,
@@ -468,7 +505,6 @@
       28px 28px;
   }
 
-  /* Header adjustments */
   .site-header .mx-auto {
     @apply px-3;
     height: 64px;
@@ -490,7 +526,6 @@
     @apply size-4;
   }
 
-  /* Hero section */
   #home {
     padding-top: 80px;
     min-height: auto;
@@ -535,7 +570,6 @@
     @apply text-[10px];
   }
 
-  /* Sections spacing */
   section {
     @apply py-16;
   }
@@ -544,7 +578,6 @@
     @apply px-4;
   }
 
-  /* Section headings */
   section h2 {
     @apply text-2xl;
     line-height: 1.3;
@@ -554,7 +587,6 @@
     @apply text-sm;
   }
 
-  /* Cards */
   .glass-card {
     @apply rounded-2xl p-5;
   }
@@ -576,7 +608,6 @@
     @apply size-5;
   }
 
-  /* Code blocks */
   .code-block pre {
     @apply text-[10px] p-3;
     line-height: 1.5;
@@ -590,7 +621,6 @@
     @apply py-3;
   }
 
-  /* Curriculum */
   #curriculum .glass-card {
     @apply p-4;
   }
@@ -603,7 +633,6 @@
     @apply text-base;
   }
 
-  /* Features */
   #features .grid {
     @apply grid-cols-2 gap-3;
   }
@@ -628,7 +657,6 @@
     @apply text-[10px];
   }
 
-  /* Contact form */
   #contact .glass-card {
     @apply p-5;
   }
@@ -637,7 +665,6 @@
     @apply px-3 py-3 text-sm;
   }
 
-  /* Footer */
   footer .px-5 {
     @apply px-4;
   }
@@ -646,7 +673,6 @@
     @apply text-[10px];
   }
 
-  /* Mobile bottom nav */
   .mobile-bottom-nav {
     @apply bottom-3;
   }
@@ -664,7 +690,6 @@
     @apply size-5;
   }
 
-  /* Floating buttons */
   #back-to-top,
   a[aria-label="تواصل عبر واتساب"] {
     @apply size-10 bottom-20;
@@ -683,7 +708,6 @@
     @apply size-4;
   }
 
-  /* Popup */
   #popup .glass-card {
     @apply p-6;
   }
@@ -698,9 +722,7 @@
   }
 }
 
-/* Small mobile - 320px to 375px */
 @media (max-width: 375px) {
-  /* Extra compact for very small screens */
   #home h1 {
     @apply text-2xl;
   }
@@ -746,7 +768,6 @@
   }
 }
 
-/* Tablet - 768px to 1023px */
 @media (min-width: 768px) and (max-width: 1023px) {
   [data-reveal="right"] {
     transform: translate3d(40px, 0, 0) scale(0.98);
@@ -793,5 +814,10 @@
   .animate-float,
   .pulse-ring {
     animation: none;
+  }
+
+  .theme-icon {
+    transition: opacity 0.15s ease;
+    transform: none !important;
   }
 }

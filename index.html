@@ -9,7 +9,7 @@
     <link
       rel="icon"
       type="image/svg+xml"
-      href="public/sprite.svg#icon-favicon"
+      href="public/favicon.svg"
     />
     <title>م. إيهاب الكومي | Software Engineer</title>
 
@@ -22,7 +22,6 @@
   </head>
 
   <body class="site-body min-h-screen overflow-x-hidden pb-28 lg:pb-0">
-    <!-- Decorative Backgrounds -->
     <div
       class="grid-background pointer-events-none fixed inset-0 z-[-10]"
     ></div>
@@ -33,7 +32,6 @@
       class="ambient-glow ambient-glow-two pointer-events-none fixed z-[-5]"
     ></div>
 
-    <!-- Header -->
     <header
       id="site-header"
       class="site-header fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl"
@@ -41,7 +39,6 @@
       <div
         class="mx-auto flex min-h-20 max-w-7xl lg:py-8 xl: xl:py-0 items-center justify-between gap-5 px-4 sm:px-6 lg:px-8 flex-wrap"
       >
-        <!-- Logo -->
         <a href="#home" class="group flex items-center gap-3" data-magnetic>
           <span
             class="flex size-12 items-center justify-center rounded-2xl border border-sky-400/20 bg-sky-400/5 text-sky-500 transition duration-300 group-hover:rotate-3 group-hover:scale-105"
@@ -59,7 +56,6 @@
           </span>
         </a>
 
-        <!-- Desktop Navigation -->
         <nav
           class="hidden items-center gap-1 lg:flex"
           aria-label="القائمة الرئيسية"
@@ -93,18 +89,25 @@
           </ul>
         </nav>
 
-        <!-- Actions -->
         <div class="flex items-center gap-2">
           <button
             id="theme-toggle"
             type="button"
             aria-label="تفعيل الوضع الفاتح"
-            class="theme-button flex size-12 items-center justify-center rounded-2xl"
+            class="theme-button relative flex size-12 items-center justify-center overflow-hidden rounded-2xl"
           >
-            <svg id="theme-icon-sun" class="hidden size-5" aria-hidden="true">
+            <svg
+              id="theme-icon-sun"
+              class="theme-icon size-5"
+              aria-hidden="true"
+            >
               <use href="./sprite.svg#bolt"></use>
             </svg>
-            <svg id="theme-icon-moon" class="size-5" aria-hidden="true">
+            <svg
+              id="theme-icon-moon"
+              class="theme-icon theme-icon-active size-5"
+              aria-hidden="true"
+            >
               <use href="./sprite.svg#moon"></use>
             </svg>
           </button>
@@ -122,7 +125,6 @@
       </div>
     </header>
 
-    <!-- Mobile Bottom Navigation - Icons Only -->
     <nav
       class="mobile-bottom-nav fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden"
       aria-label="قائمة التنقل السفلية"
@@ -195,7 +197,6 @@
     </nav>
 
     <main>
-      <!-- Hero Section -->
       <section
         id="home"
         class="relative isolate flex min-h-screen items-center overflow-hidden pt-24"
@@ -216,7 +217,6 @@
         <div
           class="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-14 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:gap-20"
         >
-          <!-- Hero Content -->
           <div data-reveal="right" class="text-center lg:text-right">
             <div
               class="mb-6 inline-flex items-center gap-3 rounded-full border border-sky-400/20 bg-sky-400/5 px-4 py-2"
@@ -309,7 +309,6 @@
             </ul>
           </div>
 
-          <!-- Hero Image -->
           <div
             data-reveal="left"
             data-magnetic
@@ -346,7 +345,6 @@
         </div>
       </section>
 
-      <!-- About Section -->
       <section
         id="about"
         class="relative overflow-hidden py-24 sm:py-32"
@@ -429,7 +427,6 @@
         </div>
       </section>
 
-      <!-- JavaScript Section -->
       <section
         id="javascript"
         class="relative overflow-hidden py-24 sm:py-32"
@@ -542,7 +539,6 @@
         </div>
       </section>
 
-      <!-- Vibe Coding Section -->
       <section
         id="vibe-coding"
         class="relative overflow-hidden py-24 sm:py-32"
@@ -674,7 +670,6 @@
         </div>
       </section>
 
-      <!-- Deep JavaScript Section -->
       <section
         id="deep-javascript"
         class="relative overflow-hidden py-24 sm:py-32"
@@ -808,7 +803,6 @@
         </div>
       </section>
 
-      <!-- Curriculum Section -->
       <section
         id="curriculum"
         class="relative overflow-hidden py-24 sm:py-32"
@@ -1042,7 +1036,6 @@
         </div>
       </section>
 
-      <!-- Features Section -->
       <section
         id="features"
         class="relative overflow-hidden py-24 sm:py-32"
@@ -1141,7 +1134,6 @@
         </div>
       </section>
 
-      <!-- Contact Section -->
       <section
         id="contact"
         class="relative overflow-hidden py-24 sm:py-32"
@@ -1296,7 +1288,6 @@
       </section>
     </main>
 
-    <!-- Footer -->
     <footer class="border-t border-[var(--color-border)] py-10">
       <div
         class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-5 text-center sm:flex-row sm:px-8 sm:text-right"
@@ -1324,7 +1315,6 @@
       </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <button
       id="back-to-top"
       type="button"
@@ -1336,7 +1326,6 @@
       </svg>
     </button>
 
-    <!-- Floating WhatsApp Button -->
     <a
       href="https://wa.me/201145383426?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%85.%20%D8%A5%D9%8A%D9%87%D8%A7%D8%A8%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B9%D8%B1%D9%81%20%D8%A3%D9%83%D8%AA%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%B3%D8%A7%D8%AA"
       target="_blank"
@@ -1349,7 +1338,6 @@
       </svg>
     </a>
 
-    <!-- Popup -->
     <div
       id="popup"
       class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/70 p-5 backdrop-blur-md"
