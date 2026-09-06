@@ -1,538 +1,672 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>منصة مهندس إيهاب الكومي | Programming & AI</title>
     <meta
-      name="description"
-      content="اتعلم البرمجة والذكاء الاصطناعي لتانية بكالوريا مع المهندس إيهاب الكومي - شرح مبسط، أمثلة عملية، ملفات PDF، ومتابعة مستمرة."
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
     />
-    <meta name="author" content="Eng. Ehab El-Komy" />
-    <meta
-      name="keywords"
-      content="Programming, AI, JavaScript, Python, تانية بكالوريا, منهج, مهندس إيهاب الكومي"
-    />
-    <meta
-      property="og:title"
-      content="منصة مهندس إيهاب الكومي | Programming & AI"
-    />
-    <meta
-      property="og:description"
-      content="اتعلم البرمجة والذكاء الاصطناعي لتانية بكالوريا"
-    />
-    <meta property="og:url" content="https://eng-ehab-elkomy.menassatok.com/" />
-    <meta property="og:type" content="website" />
     <link
       rel="icon"
-      href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2305070d'/><text x='50' y='64' font-size='42' text-anchor='middle' font-family='monospace' fill='%232e9bff'>&lt;/&gt;</text></svg>"
+      type="image/svg+xml"
+      href="public/sprite.svg#icon-favicon"
     />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="src/main.js" type="module"></script>
-    <base target="_blank" />
+    <title>م. إيهاب الكومي | Software Engineer</title>
+
+    <meta
+      name="description"
+      content="م. إيهاب الكومي - Software Engineer ومدرب برمجة وذكاء اصطناعي. تعلم JavaScript والبرمجة من خلال مشاريع عملية."
+    />
+
+    <script type="module" src="./src/main.js"></script>
   </head>
 
-  <body class="antialiased">
-    <div id="spotlight"></div>
+  <body class="site-body min-h-screen overflow-x-hidden pb-28 lg:pb-0">
+    <!-- Decorative Backgrounds -->
+    <div
+      class="grid-background pointer-events-none fixed inset-0 z-[-10]"
+    ></div>
+    <div
+      class="ambient-glow ambient-glow-one pointer-events-none fixed z-[-5]"
+    ></div>
+    <div
+      class="ambient-glow ambient-glow-two pointer-events-none fixed z-[-5]"
+    ></div>
 
-    <a href="#main-content" class="sr-only">Skip to main content</a>
-
+    <!-- Header -->
     <header
-      id="site-nav"
-      class="fixed top-0 inset-x-0 z-50 border-b border-white/5 backdrop-blur-md bg-ink/80"
+      id="site-header"
+      class="site-header fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl"
     >
-      <nav
-        class="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-8 h-16"
-        aria-label="Main navigation"
+      <div
+        class="mx-auto flex min-h-20 max-w-7xl lg:py-8 xl: xl:py-0 items-center justify-between gap-5 px-4 sm:px-6 lg:px-8 flex-wrap"
       >
-        <a href="#hero" class="flex items-center gap-2 shrink-0">
-          <span class="font-mono text-electric text-lg font-semibold"
-            >&lt;/&gt;</span
-          >
+        <!-- Logo -->
+        <a href="#home" class="group flex items-center gap-3" data-magnetic>
           <span
-            class="font-display font-bold text-[15px] sm:text-base text-paper"
-            >م. إيهاب الكومي</span
+            class="flex size-12 items-center justify-center rounded-2xl border border-sky-400/20 bg-sky-400/5 text-sky-500 transition duration-300 group-hover:rotate-3 group-hover:scale-105"
           >
+            <svg class="size-6" aria-hidden="true">
+              <use href="./sprite.svg#code"></use>
+            </svg>
+          </span>
+          <span class="hidden sm:block">
+            <span class="block text-sm font-extrabold">م. إيهاب الكومي</span>
+            <span
+              class="font-mono text-[9px] uppercase tracking-[0.24em] text-sky-500"
+              >Programming & AI</span
+            >
+          </span>
         </a>
 
-        <div
-          class="hidden md:flex items-center gap-8 font-body text-sm text-mist"
+        <!-- Desktop Navigation -->
+        <nav
+          class="hidden items-center gap-1 lg:flex"
+          aria-label="القائمة الرئيسية"
         >
-          <a href="#hero" class="nav-link">الرئيسية</a>
-          <a href="#about" class="nav-link">عن المهندس</a>
-          <a href="#curriculum" class="nav-link">المنهج</a>
-          <a href="#internals" class="nav-link">جوّه الـ JS</a>
-          <a href="#deep-dive" class="nav-link">Deep Dive</a>
-          <a href="#features" class="nav-link">المميزات</a>
-          <a href="#contact" class="nav-link">تواصل معنا</a>
-        </div>
+          <ul class="flex items-center gap-1">
+            <li><a href="#home" data-nav-link class="nav-link">الرئيسية</a></li>
+            <li>
+              <a href="#about" data-nav-link class="nav-link">عن المهندس</a>
+            </li>
+            <li>
+              <a href="#javascript" data-nav-link class="nav-link"
+                >جوه الـ JS</a
+              >
+            </li>
+            <li>
+              <a href="#deep-javascript" data-nav-link class="nav-link"
+                >Deep Dive</a
+              >
+            </li>
+            <li>
+              <a href="#vibe-coding" data-nav-link class="nav-link"
+                >Vibe Coding</a
+              >
+            </li>
+            <li>
+              <a href="#features" data-nav-link class="nav-link">المميزات</a>
+            </li>
+            <li>
+              <a href="#contact" data-nav-link class="nav-link">تواصل معنا</a>
+            </li>
+          </ul>
+        </nav>
 
-        <div class="flex items-center gap-3">
+        <!-- Actions -->
+        <div class="flex items-center gap-2">
           <button
             id="theme-toggle"
             type="button"
-            aria-label="Toggle theme"
-            aria-pressed="false"
-            class="w-10 h-10 rounded-lg border border-line flex items-center justify-center hover:border-electric transition-colors"
+            aria-label="تفعيل الوضع الفاتح"
+            class="theme-button flex size-12 items-center justify-center rounded-2xl"
           >
-            <svg
-              id="icon-sun"
-              class="hidden"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            >
-              <circle cx="12" cy="12" r="4" />
-              <path
-                d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
-              />
+            <svg id="theme-icon-sun" class="hidden size-5" aria-hidden="true">
+              <use href="./sprite.svg#bolt"></use>
             </svg>
-            <svg
-              id="icon-moon"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            >
-              <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z" />
+            <svg id="theme-icon-moon" class="size-5" aria-hidden="true">
+              <use href="./sprite.svg#moon"></use>
             </svg>
           </button>
 
           <a
-            href="https://wa.me/201145383426"
+            href="https://eng-ehab-elkomy.menassatok.com"
             target="_blank"
-            rel="noopener"
-            class="magnetic hidden sm:inline-flex items-center gap-2 rounded-lg bg-electric text-ink font-bold text-sm px-4 py-2.5 hover:bg-electric-2 transition-colors"
+            rel="noopener noreferrer"
+            class="primary-button hidden rounded-2xl px-5 py-3 text-sm font-bold sm:inline-flex"
+            data-magnetic
           >
-            <span class="glow"></span>
-            <span class="relative">اشترك دلوقتي</span>
+            المنصة التعليمية
           </a>
-
-          <button
-            id="burger"
-            class="md:hidden text-paper p-2"
-            aria-label="Open menu"
-            aria-expanded="false"
-            aria-controls="mobile-menu"
-          >
-            <svg
-              id="burger-icon"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <line class="burger-line top" x1="4" y1="6" x2="20" y2="6" />
-              <line class="burger-line middle" x1="4" y1="12" x2="20" y2="12" />
-              <line class="burger-line bottom" x1="4" y1="18" x2="20" y2="18" />
-            </svg>
-          </button>
         </div>
-      </nav>
-
-      <div id="mobile-menu" class="md:hidden font-body text-sm text-mist">
-        <a href="#hero" class="py-2.5 nav-mobile-link block">الرئيسية</a>
-        <a href="#about" class="py-2.5 nav-mobile-link block">عن المهندس</a>
-        <a href="#curriculum" class="py-2.5 nav-mobile-link block">المنهج</a>
-        <a href="#internals" class="py-2.5 nav-mobile-link block"
-          >جوّه الـ JS</a
-        >
-        <a href="#deep-dive" class="py-2.5 nav-mobile-link block">Deep Dive</a>
-        <a href="#features" class="py-2.5 nav-mobile-link block">المميزات</a>
-        <a href="#contact" class="py-2.5 nav-mobile-link block">تواصل معنا</a>
-        <a
-          href="https://wa.me/201145383426"
-          target="_blank"
-          rel="noopener"
-          class="mt-2 text-center rounded-lg bg-electric text-ink font-bold py-2.5 block"
-          >اشترك دلوقتي</a
-        >
       </div>
     </header>
 
-    <main id="main-content">
-      <section id="hero" class="section-base overflow-hidden">
-        <div class="circuit-bg"></div>
+    <!-- Mobile Bottom Navigation - Icons Only -->
+    <nav
+      class="mobile-bottom-nav fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden"
+      aria-label="قائمة التنقل السفلية"
+      style="width: auto; max-width: 95vw"
+    >
+      <ul
+        class="flex items-center justify-center gap-2 bg-[var(--color-surface-solid)]/95 backdrop-blur-xl border border-[var(--color-border)] rounded-full shadow-2xl px-4 py-2"
+      >
+        <li>
+          <a
+            href="#home"
+            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-all duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
+            data-mobile-nav-link
+            aria-label="الرئيسية"
+          >
+            <svg class="size-6 pointer-events-none" aria-hidden="true">
+              <use href="./sprite.svg#home"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#about"
+            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-all duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
+            data-mobile-nav-link
+            aria-label="عن المهندس"
+          >
+            <svg class="size-6 pointer-events-none" aria-hidden="true">
+              <use href="./sprite.svg#user"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#javascript"
+            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-all duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
+            data-mobile-nav-link
+            aria-label="جافاسكريبت"
+          >
+            <svg class="size-6 pointer-events-none" aria-hidden="true">
+              <use href="./sprite.svg#code"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#vibe-coding"
+            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-all duration-300 hover:text-fuchsia-500 hover:bg-fuchsia-500/10 active:scale-90"
+            data-mobile-nav-link
+            aria-label="فايب كودينج"
+          >
+            <svg class="size-6 pointer-events-none" aria-hidden="true">
+              <use href="./sprite.svg#sparkles"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#contact"
+            class="mobile-nav-item flex items-center justify-center size-12 rounded-full text-[var(--color-text-muted)] transition-all duration-300 hover:text-sky-500 hover:bg-sky-500/10 active:scale-90"
+            data-mobile-nav-link
+            aria-label="تواصل معنا"
+          >
+            <svg class="size-6 pointer-events-none" aria-hidden="true">
+              <use href="./sprite.svg#message"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-        <span
-          data-depth="30"
-          class="float-shape hidden sm:block absolute left-[6%] top-[22%] font-mono text-line text-3xl select-none"
-          >{ }</span
-        >
-        <span
-          data-depth="55"
-          class="float-shape hidden sm:block absolute left-[14%] top-[62%] font-mono text-electric/40 text-2xl select-none"
-          >&lt;/&gt;</span
-        >
-        <span
-          data-depth="18"
-          class="float-shape hidden sm:block absolute left-[3%] top-[80%] font-mono text-line text-xl select-none"
-          >01</span
-        >
-        <span
-          data-depth="40"
-          class="float-shape hidden sm:block absolute right-[4%] top-[16%] font-mono text-gold/40 text-2xl select-none"
-          >const</span
-        >
+    <main>
+      <!-- Hero Section -->
+      <section
+        id="home"
+        class="relative isolate flex min-h-screen items-center overflow-hidden pt-24"
+        aria-label="الرئيسية"
+      >
+        <div
+          class="grid-background pointer-events-none absolute inset-0 -z-10"
+        ></div>
 
         <div
-          class="relative container-base grid md:grid-cols-2 gap-10 sm:gap-14 items-center"
+          id="spotlight"
+          class="pointer-events-none absolute inset-0 z-0 overflow-hidden"
         >
-          <div class="order-2 md:order-1 text-center md:text-right">
+          <div data-cursor-glow></div>
+          <div data-cursor-dot></div>
+        </div>
+
+        <div
+          class="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-14 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:gap-20"
+        >
+          <!-- Hero Content -->
+          <div data-reveal="right" class="text-center lg:text-right">
             <div
-              class="reveal reveal-down inline-flex items-center gap-2 rounded-full border border-line px-4 py-1.5 mb-6 text-xs sm:text-sm text-mist font-body"
+              class="mb-6 inline-flex items-center gap-3 rounded-full border border-sky-400/20 bg-sky-400/5 px-4 py-2"
             >
-              <span class="w-1.5 h-1.5 rounded-full bg-electric"></span>
-              منهج تانية بكالوريا &mdash; Programming & AI
+              <span class="relative flex size-2.5">
+                <span
+                  class="absolute inline-flex size-full animate-ping rounded-full bg-sky-400 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex size-2.5 rounded-full bg-sky-400"
+                ></span>
+              </span>
+              <span
+                class="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-sky-500 sm:text-xs"
+                >Software Engineer</span
+              >
             </div>
 
             <h1
-              class="reveal reveal-up font-display font-black text-3xl sm:text-5xl lg:text-6xl leading-[1.15] mb-6"
+              class="mx-auto max-w-3xl text-4xl font-extrabold leading-[1.2] tracking-tight sm:text-5xl lg:mx-0 lg:text-6xl xl:text-7xl"
             >
-              البرمجة مش كود…<br />
-              <span class="text-electric">البرمجة طريقة تفكير</span>
+              اتعلم <span class="gradient-text">البرمجة</span> بشكل مختلف
             </h1>
 
             <p
-              class="reveal reveal-up font-body text-mist text-base sm:text-lg leading-8 max-w-xl mx-auto md:mx-0 mb-9"
+              class="mx-auto mt-7 max-w-2xl text-base leading-8 text-[var(--color-text-soft)] sm:text-lg lg:mx-0"
             >
-              مع المهندس إيهاب الكومي هتفهم ليه بتكتب السطر ده مش بس تحفظه. من
-              أول <span class="font-mono text-paper">const</span> وهي بتفرق عن
-              <span class="font-mono text-paper">let</span>، لحد أول خطوة في
-              الذكاء الاصطناعي.
+              مش مجرد كورس برمجة، لكن رحلة عملية تخليك تفهم الكود، تبني مشاريع
+              حقيقية، وتفكر كـ Software Engineer.
             </p>
 
             <div
-              class="reveal reveal-up flex flex-wrap justify-center md:justify-start gap-4"
+              class="mt-9 flex flex-wrap justify-center gap-3 lg:justify-start"
             >
               <a
-                href="https://wa.me/201145383426"
+                href="https://eng-ehab-elkomy.menassatok.com"
                 target="_blank"
-                rel="noopener"
-                class="magnetic inline-flex items-center gap-2 rounded-lg bg-electric text-ink font-bold px-6 sm:px-7 py-3.5 hover:bg-electric-2 transition-colors"
+                rel="noopener noreferrer"
+                class="primary-button inline-flex items-center gap-3 rounded-2xl px-6 py-3.5 text-sm font-bold sm:text-base"
+                data-magnetic
               >
-                <span class="glow"></span>
-                <span class="relative">تواصل واشترك في الأكواد</span>
+                ابدأ رحلتك
+                <svg class="size-5 -rotate-45" aria-hidden="true">
+                  <use href="./sprite.svg#arrow-up"></use>
+                </svg>
               </a>
               <a
-                href="#curriculum"
-                class="magnetic inline-flex items-center gap-2 rounded-lg border border-line text-paper font-bold px-6 sm:px-7 py-3.5 hover:border-electric transition-colors"
+                href="https://wa.me/201145383426?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%85.%20%D8%A5%D9%8A%D9%87%D8%A7%D8%A8%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B9%D8%B1%D9%81%20%D8%A3%D9%83%D8%AA%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%B3%D8%A7%D8%AA"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="whatsapp-button inline-flex items-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-bold sm:text-base"
+                data-magnetic
               >
-                <span class="glow"></span>
-                <span class="relative">شوف المنهج</span>
+                <svg class="size-5" aria-hidden="true">
+                  <use href="./sprite.svg#whatsapp"></use>
+                </svg>
+                واتساب
               </a>
             </div>
-          </div>
 
-          <div class="order-1 md:order-2 relative flex justify-center">
-            <div
-              class="reveal reveal-left relative w-[260px] sm:w-[340px] lg:w-[380px]"
-            >
-              <div
-                class="absolute -inset-10 rounded-full bg-electric/15 blur-3xl"
-              ></div>
-              <img
-                src="/instructor.jpg"
-                width="760"
-                height="1124"
-                alt="المهندس إيهاب الكومي"
-                class="relative w-full h-auto select-none instructor-img"
-                loading="eager"
-                fetchpriority="high"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="section-base section-border">
-        <div class="container-base">
-          <div
-            class="reveal reveal-right max-w-3xl mx-auto text-center mb-12 sm:mb-16"
-          >
-            <p
-              class="font-display text-xl sm:text-3xl lg:text-4xl leading-relaxed font-bold text-paper"
-            >
-              &laquo;مش هعلّمك تنسخ كود…<br class="hidden sm:block" />
-              هعلّمك تفكّر <span class="text-electric">زي المهندس</span>&raquo;
-            </p>
-            <p class="mt-6 font-body text-mist">م. إيهاب الكومي</p>
-          </div>
-
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            <div class="reveal reveal-up card-base">
-              <div
-                class="w-11 h-11 rounded-lg bg-electric/10 flex items-center justify-center mb-5"
+            <ul class="mx-auto mt-10 grid max-w-xl grid-cols-3 gap-3 list-none">
+              <li
+                class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 backdrop-blur-xl text-center"
               >
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#2e9bff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5" />
-                </svg>
-              </div>
-              <h3 class="font-display font-bold text-lg mb-2">تفكير هندسي</h3>
-              <p class="text-mist text-sm leading-7">
-                بنبدأ بـ«ليه؟» قبل «إزاي؟»، عشان تقدر تحل أي مسألة برمجية جديدة
-                بنفسك.
-              </p>
-            </div>
-            <div class="reveal reveal-up card-base delay-2">
-              <div
-                class="w-11 h-11 rounded-lg bg-electric/10 flex items-center justify-center mb-5"
-              >
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#2e9bff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                  <path
-                    d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
-                  />
-                </svg>
-              </div>
-              <h3 class="font-display font-bold text-lg mb-2">
-                مبني على المنهج
-              </h3>
-              <p class="text-mist text-sm leading-7">
-                كل حصة مربوطة بمنهج تانية بكالوريا Programming & AI بالترتيب، من
-                غير ما تحس إنك تايه.
-              </p>
-            </div>
-            <div class="reveal reveal-up card-base delay-4">
-              <div
-                class="w-11 h-11 rounded-lg bg-electric/10 flex items-center justify-center mb-5"
-              >
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#2e9bff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="12" cy="12" r="9" />
-                  <path d="M12 7v5l3 3" />
-                </svg>
-              </div>
-              <h3 class="font-display font-bold text-lg mb-2">
-                متابعة لحد ما تفهم
-              </h3>
-              <p class="text-mist text-sm leading-7">
-                مش هتفضل تايه لوحدك؛ فيه دعم فني ومتابعة مستمرة على طول الطريق.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-base section-border bg-surface/30">
-        <div
-          class="container-base grid md:grid-cols-2 gap-10 sm:gap-12 items-center"
-        >
-          <div class="reveal reveal-right order-2 md:order-1">
-            <h2
-              class="font-display font-black text-2xl sm:text-3xl lg:text-4xl leading-tight mb-5"
-            >
-              فرق بسيط… بس بيغيّر
-              <span class="text-electric">طريقة تفكيرك</span>
-            </h2>
-            <p class="font-body text-mist leading-8 mb-6">
-              كتير بيحفظوا إن
-              <span class="font-mono text-paper">const</span> بتُستخدم بدل
-              <span class="font-mono text-paper">let</span> من غير ما يفهموا
-              السبب. عندنا هتفهم إن اختيار الكلمة دي قرار هندسي بيوضّح نيتك في
-              الكود قبل ما يوضّح الكود نفسه.
-            </p>
-            <ul class="space-y-3 font-body text-sm text-mist">
-              <li class="flex items-start gap-3">
-                <span class="mt-1 text-electric">&#10003;</span> تفهم منطق
-                القيمة الثابتة قبل ما تكتبها
+                <div class="font-mono text-xl font-bold text-sky-500">JS</div>
+                <div class="mt-1 text-xs text-[var(--color-text-muted)]">
+                  JavaScript
+                </div>
               </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1 text-electric">&#10003;</span> تبني عادة
-                برمجية سليمة من أول درس
+              <li
+                class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 backdrop-blur-xl text-center"
+              >
+                <div class="font-mono text-xl font-bold text-violet-500">
+                  AI
+                </div>
+                <div class="mt-1 text-xs text-[var(--color-text-muted)]">
+                  Artificial Intelligence
+                </div>
               </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1 text-electric">&#10003;</span> تقدر تشرح قرارك
-                مش بس تنفذه
+              <li
+                class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 backdrop-blur-xl text-center"
+              >
+                <div class="font-mono text-xl font-bold text-emerald-500">
+                  DEV
+                </div>
+                <div class="mt-1 text-xs text-[var(--color-text-muted)]">
+                  Real Projects
+                </div>
               </li>
             </ul>
           </div>
 
-          <div class="reveal reveal-left order-1 md:order-2">
-            <div class="code-window">
-              <div class="code-header">
-                <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
-                <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
-                <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
-                <span class="mr-auto font-mono text-xs text-code-mist"
-                  >lesson-01.js</span
-                >
+          <!-- Hero Image -->
+          <div
+            data-reveal="left"
+            data-magnetic
+            class="relative mx-auto w-full max-w-md lg:max-w-none"
+          >
+            <div
+              class="absolute -inset-8 rounded-full bg-sky-500/10 blur-3xl"
+            ></div>
+            <div class="glass-card relative overflow-hidden rounded-[2rem] p-3">
+              <div
+                class="overflow-hidden rounded-[1.5rem] h-auto max-h-[550px]"
+              >
+                <img
+                  src="/instructor.jpg"
+                  alt="م. إيهاب الكومي"
+                  class="object-cover"
+                />
               </div>
-              <pre
-                class="font-mono text-[13px] sm:text-sm leading-8 p-5 overflow-x-auto text-code-text"
-              ><code><span class="text-code-mist">// Wrong way</span>
-<span class="text-code-keyword">let</span> <span class="text-code-text">price</span> = <span class="text-code-value">150</span>;
-
-<span class="text-code-mist">// Right way</span>
-<span class="text-code-const">const</span> <span class="text-code-text">price</span> = <span class="text-code-value">150</span>;
-<span class="text-code-mist">// Immutable value + clear intent = readable code</span></code></pre>
+              <div
+                class="absolute inset-x-7 bottom-7 rounded-2xl border border-white/10 bg-slate-950/75 p-4 text-white backdrop-blur-xl"
+              >
+                <div
+                  class="font-mono text-[10px] uppercase tracking-[0.2em] text-sky-400"
+                >
+                  Software Engineer
+                </div>
+                <div class="mt-1 text-lg font-bold">م. إيهاب الكومي</div>
+                <div class="mt-1 text-xs text-slate-300">
+                  Programming • AI • Engineering
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="internals" class="section-base section-border">
-        <div class="container-base">
-          <div class="reveal reveal-up text-center mb-12 sm:mb-20">
-            <h2
-              class="font-display font-black text-2xl sm:text-3xl lg:text-4xl mb-4"
+      <!-- About Section -->
+      <section
+        id="about"
+        class="relative overflow-hidden py-24 sm:py-32"
+        aria-label="عن المهندس"
+      >
+        <div class="mx-auto max-w-7xl px-5 sm:px-8">
+          <div data-reveal="right" class="mx-auto max-w-3xl text-center">
+            <span
+              class="font-mono text-xs uppercase tracking-[0.25em] text-sky-500"
+              >About The Engineer</span
             >
-              هتفهم مع إيهاب الكومي جوّه الـ JS
+            <h2
+              class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl"
+            >
+              مش بس تتعلم <span class="gradient-text">كود</span>
             </h2>
-            <p class="font-body text-mist max-w-lg mx-auto">
-              مش بس syntax — هتفهم إزاي JavaScript شغالة تحت الكاپوت.
+            <p
+              class="mt-5 text-base leading-8 text-[var(--color-text-soft)] sm:text-lg"
+            >
+              الهدف إنك تفهم ليه الكود بيتكتب بالشكل ده، وإزاي تستخدمه في بناء
+              أنظمة ومشاريع حقيقية.
             </p>
           </div>
 
-          <div
-            class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-12 sm:mb-16"
-          >
-            <div class="reveal reveal-up card-base">
+          <div class="mt-14 grid gap-5 md:grid-cols-3">
+            <article
+              data-reveal="right"
+              class="glass-card rounded-3xl p-7 text-center transition duration-500 hover:-translate-y-2"
+            >
               <div
-                class="w-11 h-11 rounded-lg bg-electric/10 flex items-center justify-center mb-5"
+                class="mx-auto mb-6 flex size-14 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-500"
               >
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#2e9bff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 12l10 5 10-5" />
+                <svg class="size-7" aria-hidden="true">
+                  <use href="./sprite.svg#engineering"></use>
                 </svg>
               </div>
-              <h3 class="font-display font-bold text-lg mb-2">Hoisting</h3>
-              <p class="text-mist text-sm leading-7">
-                هتفهم ليه <span class="font-mono">var</span> بتتصرف غريب، وإزاي
-                <span class="font-mono">let</span> و<span class="font-mono"
-                  >const</span
-                >
-                بيشتغلوا في Temporal Dead Zone. مش سحر — ده execution context.
+              <h3 class="text-xl font-extrabold">تفكير هندسي</h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--color-text-soft)]">
+                تتعلم إزاي تحلل المشكلة وتقسمها لأجزاء وتبني الحل بطريقة منظمة
+                وقابلة للتطوير.
               </p>
-            </div>
-            <div class="reveal reveal-up card-base delay-2">
-              <div
-                class="w-11 h-11 rounded-lg bg-electric/10 flex items-center justify-center mb-5"
-              >
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#2e9bff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                </svg>
-              </div>
-              <h3 class="font-display font-bold text-lg mb-2">
-                JIT Compilation
-              </h3>
-              <p class="text-mist text-sm leading-7">
-                JavaScript مش compiler زي C++ ولا interpreter زي Python. هي JIT
-                compiled — بتترجم لـ bytecode وتتحسن runtime. هتفهم ليه السرعة
-                دي ممكنة.
-              </p>
-            </div>
-            <div class="reveal reveal-up card-base delay-4">
-              <div
-                class="w-11 h-11 rounded-lg bg-electric/10 flex items-center justify-center mb-5"
-              >
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#2e9bff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
-                  <path d="M9 9h6v6H9z" />
-                  <path
-                    d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"
-                  />
-                </svg>
-              </div>
-              <h3 class="font-display font-bold text-lg mb-2">مرونة فائقة</h3>
-              <p class="text-mist text-sm leading-7">
-                هتفهم ليه JS مرنة أوي: prototype chain، first-class functions،
-                dynamic typing — كل ده بيديك قوة لو عرفت تستخدمها صح.
-              </p>
-            </div>
-          </div>
+            </article>
 
-          <div class="reveal reveal-up max-w-3xl mx-auto">
-            <div class="code-window">
-              <div class="code-header">
-                <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
-                <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
-                <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
-                <span class="mr-auto font-mono text-xs text-code-mist"
-                  >async-patterns.js</span
+            <article
+              data-reveal="up"
+              class="glass-card rounded-3xl p-7 text-center transition duration-500 hover:-translate-y-2"
+            >
+              <div
+                class="mx-auto mb-6 flex size-14 items-center justify-center rounded-2xl bg-violet-500/10 text-violet-500"
+              >
+                <svg class="size-7" aria-hidden="true">
+                  <use href="./sprite.svg#book"></use>
+                </svg>
+              </div>
+              <h3 class="text-xl font-extrabold">تعلم عملي</h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--color-text-soft)]">
+                كل مفهوم بيتحول لتطبيق حقيقي بدل ما تفضل تحفظ Syntax من غير ما
+                تعرف تستخدمه.
+              </p>
+            </article>
+
+            <article
+              data-reveal="left"
+              class="glass-card rounded-3xl p-7 text-center transition duration-500 hover:-translate-y-2"
+            >
+              <div
+                class="mx-auto mb-6 flex size-14 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-500"
+              >
+                <svg class="size-7" aria-hidden="true">
+                  <use href="./sprite.svg#headphones"></use>
+                </svg>
+              </div>
+              <h3 class="text-xl font-extrabold">دعم مستمر</h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--color-text-soft)]">
+                مش هتكون لوحدك. الهدف إنك تعرف تسأل، تحلل الخطأ، وتوصل للحل
+                بنفسك.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- JavaScript Section -->
+      <section
+        id="javascript"
+        class="relative overflow-hidden py-24 sm:py-32"
+        aria-label="جوه الجافاسكريبت"
+      >
+        <div class="mx-auto max-w-7xl px-5 sm:px-8">
+          <div class="grid items-center gap-14 lg:grid-cols-2">
+            <div data-reveal="right" class="text-center lg:text-right">
+              <span
+                class="font-mono text-xs uppercase tracking-[0.25em] text-sky-500"
+                >Inside JavaScript</span
+              >
+              <h2
+                class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl"
+              >
+                ادخل <span class="gradient-text">جوه الـ JavaScript</span>
+              </h2>
+              <p class="mt-6 text-base leading-8 text-[var(--color-text-soft)]">
+                من المتغيرات والـ conditions لحد الـ async programming والـ APIs
+                والـ modules. مش هنتعامل مع JavaScript كـ syntax بس، لكن كأداة
+                لبناء تطبيقات حقيقية.
+              </p>
+
+              <ul class="mt-8 grid gap-3 sm:grid-cols-2 list-none text-center">
+                <li
+                  class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
+                >
+                  <div class="font-mono text-xs text-sky-500">01</div>
+                  <h3 class="mt-2 font-bold">Variables</h3>
+                  <p
+                    class="mt-1 text-xs leading-6 text-[var(--color-text-muted)]"
+                  >
+                    let • const • scope
+                  </p>
+                </li>
+                <li
+                  class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
+                >
+                  <div class="font-mono text-xs text-violet-500">02</div>
+                  <h3 class="mt-2 font-bold">Control Flow</h3>
+                  <p
+                    class="mt-1 text-xs leading-6 text-[var(--color-text-muted)]"
+                  >
+                    conditions • loops
+                  </p>
+                </li>
+                <li
+                  class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
+                >
+                  <div class="font-mono text-xs text-emerald-500">03</div>
+                  <h3 class="mt-2 font-bold">Functions</h3>
+                  <p
+                    class="mt-1 text-xs leading-6 text-[var(--color-text-muted)]"
+                  >
+                    callbacks • closures
+                  </p>
+                </li>
+                <li
+                  class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
+                >
+                  <div class="font-mono text-xs text-amber-500">04</div>
+                  <h3 class="mt-2 font-bold">Async</h3>
+                  <p
+                    class="mt-1 text-xs leading-6 text-[var(--color-text-muted)]"
+                  >
+                    promises • async/await
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <div
+              data-reveal="left"
+              class="code-block overflow-hidden rounded-3xl shadow-2xl"
+            >
+              <div
+                class="flex items-center justify-between border-b border-white/10 px-5 py-4"
+              >
+                <div class="flex gap-2" aria-hidden="true">
+                  <span class="size-3 rounded-full bg-red-400"></span>
+                  <span class="size-3 rounded-full bg-yellow-400"></span>
+                  <span class="size-3 rounded-full bg-emerald-400"></span>
+                </div>
+                <span class="font-mono text-[10px] text-slate-400"
+                  >variables.js</span
                 >
               </div>
               <pre
-                class="font-mono text-[13px] sm:text-sm leading-8 p-5 overflow-x-auto text-code-text"
-              ><code><span class="text-code-mist">// Don't write this</span>
-<span class="text-code-keyword">fetch</span>(<span class="text-code-value">'/api/data'</span>)
-  .<span class="text-code-keyword">then</span>(<span class="text-code-text">res</span> => <span class="text-code-text">res</span>.<span class="text-code-keyword">json</span>())
-  .<span class="text-code-keyword">then</span>(<span class="text-code-text">data</span> => <span class="text-code-keyword">console</span>.<span class="text-code-keyword">log</span>(<span class="text-code-text">data</span>))
-  .<span class="text-code-keyword">catch</span>(<span class="text-code-text">err</span> => <span class="text-code-keyword">console</span>.<span class="text-code-keyword">error</span>(<span class="text-code-text">err</span>));
+                class="overflow-x-auto p-5 text-left text-xs leading-7 sm:p-7 sm:text-sm font-mono"
+                dir="ltr"
+              ><code><span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
+  <span class="code-property">name</span>: <span class="code-string">"Ehab"</span>,
+  <span class="code-property">role</span>: <span class="code-string">"Software Engineer"</span>,
+  <span class="code-property">skills</span>: [
+    <span class="code-string">"JavaScript"</span>,
+    <span class="code-string">"AI"</span>,
+    <span class="code-string">"Problem Solving"</span>
+  ]
+};
 
-<span class="text-code-mist">// Write this instead — readable, debuggable, modern</span>
-<span class="text-code-keyword">async function</span> <span class="text-code-const">getData</span>() {
-  <span class="text-code-keyword">try</span> {
-    <span class="text-code-keyword">const</span> <span class="text-code-text">res</span> = <span class="text-code-keyword">await</span> <span class="text-code-keyword">fetch</span>(<span class="text-code-value">'/api/data'</span>);
-    <span class="text-code-keyword">const</span> <span class="text-code-text">data</span> = <span class="text-code-keyword">await</span> <span class="text-code-text">res</span>.<span class="text-code-keyword">json</span>();
-    <span class="text-code-keyword">console</span>.<span class="text-code-keyword">log</span>(<span class="text-code-text">data</span>);
-  } <span class="text-code-keyword">catch</span> (<span class="text-code-text">err</span>) {
-    <span class="text-code-keyword">console</span>.<span class="text-code-keyword">error</span>(<span class="text-code-text">err</span>);
+<span class="code-keyword">const</span> <span class="code-function">buildProject</span> = () => {
+  <span class="code-keyword">return</span> {
+    <span class="code-property">idea</span>: <span class="code-boolean">true</span>,
+    <span class="code-property">code</span>: <span class="code-boolean">true</span>,
+    <span class="code-property">learning</span>: <span class="code-string">"continuous"</span>
+  };
+};</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vibe Coding Section -->
+      <section
+        id="vibe-coding"
+        class="relative overflow-hidden py-24 sm:py-32"
+        aria-label="فايب كودينج"
+      >
+        <div class="mx-auto max-w-7xl px-5 sm:px-8">
+          <div class="grid items-center gap-14 lg:grid-cols-2">
+            <div data-reveal="right" class="text-center lg:text-right">
+              <span
+                class="font-mono text-xs uppercase tracking-[0.25em] text-fuchsia-500"
+                >Vibe Coding Era</span
+              >
+              <h2
+                class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl"
+              >
+                في عصر الـ <span class="gradient-text">Vibe Coding</span>..
+                هتتعلم تبقي Software Engineer حقيقي
+              </h2>
+              <p class="mt-6 text-base leading-8 text-[var(--color-text-soft)]">
+                الـ AI بقى بيكتب كود، بس السؤال الحقيقي: هل تفهم الكود اللي
+                بيتكتب؟ ولا مجرد copy/paste؟ في الرحلة دي هتتعلم إزاي تستخدم الـ
+                AI بذكاء، تفهم الـ code، تصلح الـ bugs، وتبني أنظمة حقيقية.
+              </p>
+
+              <ul class="mt-8 space-y-4 list-none text-right">
+                <li
+                  class="flex items-start gap-4 justify-center lg:justify-start"
+                >
+                  <span
+                    class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-fuchsia-500/10 text-fuchsia-500"
+                  >
+                    <svg class="size-5" aria-hidden="true">
+                      <use href="./sprite.svg#bolt"></use>
+                    </svg>
+                  </span>
+                  <div class="text-center lg:text-right">
+                    <h3 class="font-bold">افهم الـ Code</h3>
+                    <p class="mt-1 text-sm text-[var(--color-text-soft)]">
+                      مش بس تكتب، لكن تفهم كل سطر وليه اتكتب كده.
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex items-start gap-4 justify-center lg:justify-start"
+                >
+                  <span
+                    class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-fuchsia-500/10 text-fuchsia-500"
+                  >
+                    <svg class="size-5" aria-hidden="true">
+                      <use href="./sprite.svg#engineering"></use>
+                    </svg>
+                  </span>
+                  <div class="text-center lg:text-right">
+                    <h3 class="font-bold">استخدم AI بذكاء</h3>
+                    <p class="mt-1 text-sm text-[var(--color-text-soft)]">
+                      تعرف إزاي توجه الـ AI صح وتقيم الـ output بتاعه.
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex items-start gap-4 justify-center lg:justify-start"
+                >
+                  <span
+                    class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-fuchsia-500/10 text-fuchsia-500"
+                  >
+                    <svg class="size-5" aria-hidden="true">
+                      <use href="./sprite.svg#code"></use>
+                    </svg>
+                  </span>
+                  <div class="text-center lg:text-right">
+                    <h3 class="font-bold">حل المشاكل الحقيقية</h3>
+                    <p class="mt-1 text-sm text-[var(--color-text-soft)]">
+                      مش مجرد coding challenges، لكن مشاكل حقيقية في مشاريع.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="mt-8 text-center lg:text-right">
+                <a
+                  href="https://eng-ehab-elkomy.menassatok.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="primary-button inline-flex items-center gap-3 rounded-2xl px-6 py-3.5 text-sm font-bold"
+                  data-magnetic
+                >
+                  ابدأ التعلم دلوقتي
+                  <svg class="size-5 -rotate-45" aria-hidden="true">
+                    <use href="./sprite.svg#arrow-up"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div
+              data-reveal="left"
+              class="code-block overflow-hidden rounded-3xl shadow-2xl"
+            >
+              <div
+                class="flex items-center justify-between border-b border-white/10 px-5 py-4"
+              >
+                <div class="flex gap-2" aria-hidden="true">
+                  <span class="size-3 rounded-full bg-red-400"></span>
+                  <span class="size-3 rounded-full bg-yellow-400"></span>
+                  <span class="size-3 rounded-full bg-emerald-400"></span>
+                </div>
+                <span class="font-mono text-[10px] text-slate-400"
+                  >ai-engineering.js</span
+                >
+              </div>
+              <pre
+                class="overflow-x-auto p-5 text-left text-xs leading-7 sm:p-7 sm:text-sm font-mono"
+                dir="ltr"
+              ><code><span class="code-keyword">class</span> <span class="code-class">AIAssistedEngineer</span> {
+  <span class="code-function">constructor</span>() {
+    <span class="code-keyword">this</span>.<span class="code-property">tools</span> = [<span class="code-string">"AI"</span>, <span class="code-string">"JavaScript"</span>];
+    <span class="code-keyword">this</span>.<span class="code-property">skills</span> = [<span class="code-string">"Problem Solving"</span>];
+  }
+
+  <span class="code-function">reviewCode</span>(<span class="code-variable">code</span>) {
+    <span class="code-keyword">if</span> (!<span class="code-keyword">this</span>.<span class="code-property">understand</span>(<span class="code-variable">code</span>)) {
+      <span class="code-keyword">throw</span> <span class="code-keyword">new</span> <span class="code-class">Error</span>(<span class="code-string">"Don't copy, understand!"</span>);
+    }
+    <span class="code-keyword">return</span> <span class="code-boolean">true</span>;
   }
 }</code></pre>
             </div>
@@ -540,553 +674,718 @@
         </div>
       </section>
 
-      <section id="deep-dive" class="section-base section-border bg-surface/30">
-        <div class="container-base">
-          <div class="reveal reveal-up text-center mb-12 sm:mb-20">
-            <h2
-              class="font-display font-black text-2xl sm:text-3xl lg:text-4xl mb-4"
+      <!-- Deep JavaScript Section -->
+      <section
+        id="deep-javascript"
+        class="relative overflow-hidden py-24 sm:py-32"
+        aria-label="ديب دايڤ جافاسكريبت"
+      >
+        <div class="mx-auto max-w-7xl px-5 sm:px-8">
+          <div
+            data-reveal="right"
+            class="max-w-3xl mx-auto text-center lg:text-right lg:mx-0"
+          >
+            <span
+              class="font-mono text-xs uppercase tracking-[0.25em] text-violet-500"
+              >Advanced JavaScript</span
             >
-              Deep Dive — من let لـ async/sync
+            <h2
+              class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl"
+            >
+              لما تفهم <span class="gradient-text">اللي بيحصل تحت</span> الـ
+              Syntax
             </h2>
-            <p class="font-body text-mist max-w-2xl mx-auto">
-              هتاخد Deep Dive جوّه وهخليك software engineer في عصر الـ Vibe
-              Coding. تفكر تعمل planning, user story, feature flowchart,
-              architecture.
+            <p
+              class="mt-5 text-base leading-8 text-[var(--color-text-soft)] sm:text-lg"
+            >
+              هنا بنبدأ نفهم JavaScript بشكل أعمق: execution context، closures،
+              event loop، promises، modules، والـ asynchronous patterns.
             </p>
           </div>
 
-          <div class="grid md:grid-cols-2 gap-8 mb-12 sm:mb-16">
-            <div class="reveal reveal-right">
-              <div class="code-window">
-                <div class="code-header">
-                  <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
-                  <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
-                  <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
-                  <span class="mr-auto font-mono text-xs text-code-mist"
-                    >architecture.md</span
-                  >
-                </div>
-                <pre
-                  class="font-mono text-[13px] sm:text-sm leading-8 p-5 overflow-x-auto text-code-text"
-                ><code><span class="text-code-mist"># User Story</span>
-<span class="text-code-text">As a</span> <span class="text-code-value">student</span>
-<span class="text-code-text">I want to</span> <span class="text-code-value">track my progress</span>
-<span class="text-code-text">So that</span> <span class="text-code-value">I know what to study next</span>
-
-<span class="text-code-mist"># Feature Flowchart</span>
-<span class="text-code-text">Login → Dashboard → Select Topic</span>
-<span class="text-code-text">        ↓</span>
-<span class="text-code-text">   Progress Bar → Quiz → Certificate</span>
-
-<span class="text-code-mist"># Architecture</span>
-<span class="text-code-text">Frontend: React / Next.js</span>
-<span class="text-code-text">Backend:  Node.js / Express</span>
-<span class="text-code-text">Database: PostgreSQL</span>
-<span class="text-code-text">AI:       OpenAI API</span></code></pre>
+          <div class="mt-14 grid gap-5 md:grid-cols-2">
+            <article
+              data-reveal="right"
+              class="glass-card rounded-3xl p-7 text-center"
+            >
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-sky-500">01</span>
+                <span
+                  class="rounded-xl bg-sky-500/10 px-3 py-1 font-mono text-[10px] text-sky-500"
+                  >CORE</span
+                >
               </div>
-            </div>
-
-            <div class="reveal reveal-left flex flex-col justify-center">
-              <h3 class="font-display font-bold text-xl sm:text-2xl mb-4">
-                Vibe Coding Era
-              </h3>
-              <p class="text-mist leading-8 mb-6">
-                في عصر الـ AI مش بس بتكتب كود — بتصمم نظام. هتتعلم إزاي تفكر قبل
-                ما تكتب: planning, user stories, flowcharts, وarchitecture
-                decisions.
+              <h3 class="mt-5 text-xl font-extrabold">Execution Context</h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--color-text-soft)]">
+                افهم إزاي JavaScript بتنفذ الكود، وإيه علاقة الـ scope والـ call
+                stack بالموضوع.
               </p>
-              <ul class="space-y-3 font-body text-sm text-mist">
-                <li class="flex items-start gap-3">
-                  <span class="mt-1 text-electric">&#10003;</span> Planning قبل
-                  الكتابة
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="mt-1 text-electric">&#10003;</span> User Stories
-                  واضحة
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="mt-1 text-electric">&#10003;</span> Flowcharts
-                  لكل feature
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="mt-1 text-electric">&#10003;</span> Architecture
-                  decisions مدروسة
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="mt-1 text-electric">&#10003;</span> من let لـ
-                  async/await — خطوة بخطوة
-                </li>
-              </ul>
-            </div>
+            </article>
+
+            <article
+              data-reveal="left"
+              class="glass-card rounded-3xl p-7 text-center"
+            >
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-violet-500">02</span>
+                <span
+                  class="rounded-xl bg-violet-500/10 px-3 py-1 font-mono text-[10px] text-violet-500"
+                  >ASYNC</span
+                >
+              </div>
+              <h3 class="mt-5 text-xl font-extrabold">Event Loop</h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--color-text-soft)]">
+                تعرف ليه JavaScript قادرة تتعامل مع العمليات غير المتزامنة رغم
+                إنها single-threaded.
+              </p>
+            </article>
+
+            <article
+              data-reveal="right"
+              class="glass-card rounded-3xl p-7 text-center"
+            >
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-emerald-500">03</span>
+                <span
+                  class="rounded-xl bg-emerald-500/10 px-3 py-1 font-mono text-[10px] text-emerald-500"
+                  >PATTERNS</span
+                >
+              </div>
+              <h3 class="mt-5 text-xl font-extrabold">
+                Promises & Async/Await
+              </h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--color-text-soft)]">
+                تبني flow نظيف للـ asynchronous operations وتتعامل مع الأخطاء
+                بشكل احترافي.
+              </p>
+            </article>
+
+            <article
+              data-reveal="left"
+              class="glass-card rounded-3xl p-7 text-center"
+            >
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-amber-500">04</span>
+                <span
+                  class="rounded-xl bg-amber-500/10 px-3 py-1 font-mono text-[10px] text-amber-500"
+                  >MODULES</span
+                >
+              </div>
+              <h3 class="mt-5 text-xl font-extrabold">
+                Modules & Architecture
+              </h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--color-text-soft)]">
+                تنظم المشروع بدل ما يتحول لملف JavaScript ضخم وصعب الصيانة.
+              </p>
+            </article>
           </div>
 
           <div
-            class="reveal reveal-up grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
+            data-reveal="left"
+            class="code-block mt-8 overflow-hidden rounded-3xl"
           >
-            <div class="card-interactive">
-              <svg
-                width="26"
-                height="26"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#2e9bff"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="mb-4"
+            <div
+              class="flex items-center justify-between border-b border-white/10 px-5 py-4"
+            >
+              <span class="font-mono text-[10px] text-slate-400"
+                >async-patterns.js</span
               >
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-              </svg>
-              <h3 class="font-display font-bold mb-1.5">Planning</h3>
-              <p class="text-mist text-sm leading-6">
-                تخطيط المشروع قبل سطر الكود الأول.
-              </p>
+              <span class="font-mono text-[10px] text-emerald-400">async</span>
             </div>
-            <div class="card-interactive delay-1">
-              <svg
-                width="26"
-                height="26"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#2e9bff"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="mb-4"
-              >
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-              <h3 class="font-display font-bold mb-1.5">User Stories</h3>
-              <p class="text-mist text-sm leading-6">
-                تعريف المستخدم و احتياجاته بوضوح.
-              </p>
-            </div>
-            <div class="card-interactive delay-3">
-              <svg
-                width="26"
-                height="26"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#2e9bff"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="mb-4"
-              >
-                <rect x="3" y="3" width="7" height="7" />
-                <rect x="14" y="3" width="7" height="7" />
-                <rect x="14" y="14" width="7" height="7" />
-                <rect x="3" y="14" width="7" height="7" />
-              </svg>
-              <h3 class="font-display font-bold mb-1.5">Flowcharts</h3>
-              <p class="text-mist text-sm leading-6">
-                رسم مسار كل feature قبل التنفيذ.
-              </p>
-            </div>
-            <div class="card-interactive delay-5">
-              <svg
-                width="26"
-                height="26"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#2e9bff"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="mb-4"
-              >
-                <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                <path d="M2 17l10 5 10-5" />
-                <path d="M2 12l10 5 10-5" />
-              </svg>
-              <h3 class="font-display font-bold mb-1.5">Architecture</h3>
-              <p class="text-mist text-sm leading-6">
-                تصميم النظام بشكل modular و scalable.
-              </p>
-            </div>
+            <pre
+              class="overflow-x-auto p-5 text-left text-xs leading-7 sm:p-7 sm:text-sm font-mono"
+              dir="ltr"
+            ><code><span class="code-keyword">const</span> <span class="code-function">getUser</span> = <span class="code-keyword">async</span> () => {
+  <span class="code-keyword">try</span> {
+    <span class="code-keyword">const</span> <span class="code-variable">response</span> = <span class="code-keyword">await</span> <span class="code-function">fetch</span>(<span class="code-string">"/api/user"</span>);
+    <span class="code-keyword">const</span> <span class="code-variable">user</span> = <span class="code-keyword">await</span> <span class="code-variable">response</span>.<span class="code-function">json</span>();
+    <span class="code-keyword">return</span> <span class="code-variable">user</span>;
+  } <span class="code-keyword">catch</span> (<span class="code-variable">error</span>) {
+    <span class="code-object">console</span>.<span class="code-function">error</span>(<span class="code-variable">error</span>);
+  }
+};</code></pre>
           </div>
         </div>
       </section>
 
-      <section id="curriculum" class="section-base section-border">
-        <div class="max-w-4xl mx-auto px-5 sm:px-8">
-          <div class="reveal reveal-up text-center mb-12 sm:mb-20">
-            <h2
-              class="font-display font-black text-2xl sm:text-3xl lg:text-4xl mb-4"
+      <!-- Curriculum Section -->
+      <section
+        id="curriculum"
+        class="relative overflow-hidden py-24 sm:py-32"
+        aria-label="المنهج"
+      >
+        <div class="mx-auto max-w-7xl px-5 sm:px-8">
+          <div data-reveal="right" class="mx-auto max-w-3xl text-center">
+            <span
+              class="font-mono text-xs uppercase tracking-[0.25em] text-sky-500"
+              >Curriculum</span
             >
-              خريطة المنهج
+            <h2
+              class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl"
+            >
+              طريقك من <span class="gradient-text">الصفر للاحتراف</span>
             </h2>
-            <p class="font-body text-mist max-w-lg mx-auto">
-              من أول سطر كود لحد أول خطوة في الذكاء الاصطناعي — خطوة ورا خطوة.
+            <p class="mt-5 text-base leading-8 text-[var(--color-text-soft)]">
+              منهج منظم يخليك تتحرك خطوة بخطوة بدون ما تحس إنك تايه وسط كمية
+              معلومات كبيرة.
             </p>
           </div>
 
-          <div class="relative tree-line">
+          <div class="relative mt-16">
             <div
-              class="reveal reveal-right relative grid md:grid-cols-2 gap-6 items-center mb-10 sm:mb-14"
-            >
-              <div class="md:text-right md:pr-12 order-2 md:order-1">
-                <span class="font-mono text-xs text-electric">01</span>
-                <h3 class="font-display font-bold text-lg sm:text-xl mt-1 mb-2">
-                  الأساسيات: المتغيرات والثوابت
-                </h3>
-                <p class="text-mist text-sm leading-7">
-                  تفهم الفرق بين <span class="font-mono">let</span> و<span
-                    class="font-mono"
-                    >const</span
+              class="absolute bottom-0 right-7 top-0 hidden w-px bg-gradient-to-b from-sky-500/50 via-violet-500/30 to-transparent md:block"
+              aria-hidden="true"
+            ></div>
+
+            <ol class="space-y-5 list-none">
+              <li>
+                <article
+                  data-reveal="right"
+                  class="glass-card relative rounded-3xl p-6 text-center md:text-right md:mr-16"
+                >
+                  <div
+                    class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-center md:justify-start"
                   >
-                  وليه بيهم فرق في طريقة تفكيرك.
-                </p>
-              </div>
-              <div class="order-1 md:order-2"></div>
-              <span
-                class="hidden md:flex absolute right-1/2 top-1 translate-x-1/2 w-4 h-4 rounded-full bg-electric ring-4 ring-ink"
-              ></span>
-            </div>
+                    <div
+                      class="mx-auto sm:mx-0 flex size-16 shrink-0 items-center justify-center rounded-2xl bg-sky-500/10 font-mono text-lg font-bold text-sky-500"
+                    >
+                      01
+                    </div>
+                    <div class="flex-1">
+                      <div
+                        class="font-mono text-[10px] uppercase tracking-[0.2em] text-sky-500"
+                      >
+                        Foundation
+                      </div>
+                      <h3 class="mt-1 text-xl font-extrabold">
+                        أساسيات البرمجة
+                      </h3>
+                      <p
+                        class="mt-2 text-sm leading-7 text-[var(--color-text-soft)]"
+                      >
+                        Variables، Data Types، Operators، Conditions، Loops،
+                        Functions.
+                      </p>
+                    </div>
+                    <div
+                      class="hidden font-mono text-xs text-[var(--color-text-muted)] sm:block"
+                    >
+                      START
+                    </div>
+                  </div>
+                </article>
+              </li>
 
-            <div
-              class="reveal reveal-left relative grid md:grid-cols-2 gap-6 items-center mb-10 sm:mb-14"
-            >
-              <div class="order-2"></div>
-              <div class="md:text-left md:pl-12 order-1">
-                <span class="font-mono text-xs text-electric">02</span>
-                <h3 class="font-display font-bold text-lg sm:text-xl mt-1 mb-2">
-                  التحكم: الشروط والحلقات
-                </h3>
-                <p class="text-mist text-sm leading-7">
-                  تتعلم إزاي تخلي البرنامج ياخد قرارات ويكرر خطوات لوحده.
-                </p>
-              </div>
-              <span
-                class="hidden md:flex absolute right-1/2 top-1 translate-x-1/2 w-4 h-4 rounded-full bg-electric ring-4 ring-ink"
-              ></span>
-            </div>
+              <li>
+                <article
+                  data-reveal="left"
+                  class="glass-card relative rounded-3xl p-6 text-center md:text-right md:ml-16"
+                >
+                  <div
+                    class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-center md:justify-start"
+                  >
+                    <div
+                      class="mx-auto sm:mx-0 flex size-16 shrink-0 items-center justify-center rounded-2xl bg-violet-500/10 font-mono text-lg font-bold text-violet-500"
+                    >
+                      02
+                    </div>
+                    <div class="flex-1">
+                      <div
+                        class="font-mono text-[10px] uppercase tracking-[0.2em] text-violet-500"
+                      >
+                        JavaScript
+                      </div>
+                      <h3 class="mt-1 text-xl font-extrabold">
+                        JavaScript من الداخل
+                      </h3>
+                      <p
+                        class="mt-2 text-sm leading-7 text-[var(--color-text-soft)]"
+                      >
+                        Objects، Arrays، DOM، Events، Scope، Closures، Modules.
+                      </p>
+                    </div>
+                    <div
+                      class="hidden font-mono text-xs text-[var(--color-text-muted)] sm:block"
+                    >
+                      CORE
+                    </div>
+                  </div>
+                </article>
+              </li>
 
-            <div
-              class="reveal reveal-right relative grid md:grid-cols-2 gap-6 items-center mb-10 sm:mb-14"
-            >
-              <div class="md:text-right md:pr-12 order-2 md:order-1">
-                <span class="font-mono text-xs text-electric">03</span>
-                <h3 class="font-display font-bold text-lg sm:text-xl mt-1 mb-2">
-                  البناء: الدوال والوحدات
-                </h3>
-                <p class="text-mist text-sm leading-7">
-                  تقسّم أي مسألة كبيرة لقطع صغيرة قابلة لإعادة الاستخدام.
-                </p>
-              </div>
-              <div class="order-1 md:order-2"></div>
-              <span
-                class="hidden md:flex absolute right-1/2 top-1 translate-x-1/2 w-4 h-4 rounded-full bg-electric ring-4 ring-ink"
-              ></span>
-            </div>
+              <li>
+                <article
+                  data-reveal="right"
+                  class="glass-card relative rounded-3xl p-6 text-center md:text-right md:mr-16"
+                >
+                  <div
+                    class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-center md:justify-start"
+                  >
+                    <div
+                      class="mx-auto sm:mx-0 flex size-16 shrink-0 items-center justify-center rounded-2xl bg-emerald-500/10 font-mono text-lg font-bold text-emerald-500"
+                    >
+                      03
+                    </div>
+                    <div class="flex-1">
+                      <div
+                        class="font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-500"
+                      >
+                        Async
+                      </div>
+                      <h3 class="mt-1 text-xl font-extrabold">
+                        البرمجة غير المتزامنة
+                      </h3>
+                      <p
+                        class="mt-2 text-sm leading-7 text-[var(--color-text-soft)]"
+                      >
+                        Promises، Fetch، Async/Await، APIs، Error Handling.
+                      </p>
+                    </div>
+                    <div
+                      class="hidden font-mono text-xs text-[var(--color-text-muted)] sm:block"
+                    >
+                      FLOW
+                    </div>
+                  </div>
+                </article>
+              </li>
 
-            <div
-              class="reveal reveal-left relative grid md:grid-cols-2 gap-6 items-center mb-10 sm:mb-14"
-            >
-              <div class="order-2"></div>
-              <div class="md:text-left md:pl-12 order-1">
-                <span class="font-mono text-xs text-electric">04</span>
-                <h3 class="font-display font-bold text-lg sm:text-xl mt-1 mb-2">
-                  التفكير الهندسي: البرمجة الكائنية
-                </h3>
-                <p class="text-mist text-sm leading-7">
-                  تبدأ تصمم الكود زي ما المهندس بيصمم النظام، مش زي ما بيكتب
-                  الأسطر بس.
-                </p>
-              </div>
-              <span
-                class="hidden md:flex absolute right-1/2 top-1 translate-x-1/2 w-4 h-4 rounded-full bg-electric ring-4 ring-ink"
-              ></span>
-            </div>
+              <li>
+                <article
+                  data-reveal="left"
+                  class="glass-card relative rounded-3xl p-6 text-center md:text-right md:ml-16"
+                >
+                  <div
+                    class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-center md:justify-start"
+                  >
+                    <div
+                      class="mx-auto sm:mx-0 flex size-16 shrink-0 items-center justify-center rounded-2xl bg-amber-500/10 font-mono text-lg font-bold text-amber-500"
+                    >
+                      04
+                    </div>
+                    <div class="flex-1">
+                      <div
+                        class="font-mono text-[10px] uppercase tracking-[0.2em] text-amber-500"
+                      >
+                        Engineering
+                      </div>
+                      <h3 class="mt-1 text-xl font-extrabold">
+                        التفكير كـ Software Engineer
+                      </h3>
+                      <p
+                        class="mt-2 text-sm leading-7 text-[var(--color-text-soft)]"
+                      >
+                        Architecture، Clean Code، Problem Solving، Design
+                        Patterns.
+                      </p>
+                    </div>
+                    <div
+                      class="hidden font-mono text-xs text-[var(--color-text-muted)] sm:block"
+                    >
+                      BUILD
+                    </div>
+                  </div>
+                </article>
+              </li>
 
-            <div
-              class="reveal reveal-right relative grid md:grid-cols-2 gap-6 items-center"
+              <li>
+                <article
+                  data-reveal="right"
+                  class="glass-card relative rounded-3xl p-6 text-center md:text-right md:mr-16"
+                >
+                  <div
+                    class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-center md:justify-start"
+                  >
+                    <div
+                      class="mx-auto sm:mx-0 flex size-16 shrink-0 items-center justify-center rounded-2xl bg-cyan-500/10 font-mono text-lg font-bold text-cyan-500"
+                    >
+                      05
+                    </div>
+                    <div class="flex-1">
+                      <div
+                        class="font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-500"
+                      >
+                        Projects
+                      </div>
+                      <h3 class="mt-1 text-xl font-extrabold">مشاريع حقيقية</h3>
+                      <p
+                        class="mt-2 text-sm leading-7 text-[var(--color-text-soft)]"
+                      >
+                        تطبيق المعرفة في مشاريع كاملة قابلة للعرض والتطوير.
+                      </p>
+                    </div>
+                    <div
+                      class="hidden font-mono text-xs text-[var(--color-text-muted)] sm:block"
+                    >
+                      SHIP
+                    </div>
+                  </div>
+                </article>
+              </li>
+            </ol>
+          </div>
+
+          <div class="mt-10 text-center">
+            <a
+              href="https://eng-ehab-elkomy.menassatok.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="primary-button inline-flex items-center gap-3 rounded-2xl px-8 py-4 text-sm font-bold sm:text-base"
+              data-magnetic
             >
-              <div class="md:text-right md:pr-12 order-2 md:order-1">
-                <span class="font-mono text-xs text-gold">05</span>
-                <h3 class="font-display font-bold text-lg sm:text-xl mt-1 mb-2">
-                  الخطوة الجديدة: مقدمة الذكاء الاصطناعي
-                </h3>
-                <p class="text-mist text-sm leading-7">
-                  أول تعامل مع الـ AI بنفس أسلوب الفهم اللي اتعلمته من أول
-                  الطريق.
-                </p>
-              </div>
-              <div class="order-1 md:order-2"></div>
-              <span
-                class="hidden md:flex absolute right-1/2 top-1 translate-x-1/2 w-4 h-4 rounded-full bg-gold ring-4 ring-ink"
-              ></span>
-            </div>
+              سجل في المنصة التعليمية
+              <svg class="size-5 -rotate-45" aria-hidden="true">
+                <use href="./sprite.svg#arrow-up"></use>
+              </svg>
+            </a>
           </div>
         </div>
       </section>
 
-      <section id="features" class="section-base section-border bg-surface/30">
-        <div class="container-base">
-          <div class="reveal reveal-up text-center mb-12 sm:mb-16">
-            <h2
-              class="font-display font-black text-2xl sm:text-3xl lg:text-4xl mb-4"
+      <!-- Features Section -->
+      <section
+        id="features"
+        class="relative overflow-hidden py-24 sm:py-32"
+        aria-label="المميزات"
+      >
+        <div class="mx-auto max-w-7xl px-5 sm:px-8">
+          <div data-reveal="right" class="mx-auto max-w-3xl text-center">
+            <span
+              class="font-mono text-xs uppercase tracking-[0.25em] text-sky-500"
+              >Why This Journey</span
             >
-              هتاخد إيه في المنصة
+            <h2
+              class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl"
+            >
+              ليه <span class="gradient-text">تتعلم معانا؟</span>
             </h2>
-            <p class="font-body text-mist max-w-lg mx-auto">
-              كل حاجة محتاجها عشان تفهم مش تحفظ.
-            </p>
           </div>
 
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div class="reveal reveal-up card-interactive">
-              <svg
-                width="26"
-                height="26"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#2e9bff"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="mb-4"
+          <ul class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 list-none">
+            <li>
+              <article
+                data-reveal="right"
+                class="glass-card rounded-3xl p-6 text-center transition duration-500 hover:-translate-y-2"
               >
-                <circle cx="12" cy="12" r="9" />
-                <path d="M10 8.5v7l6-3.5-6-3.5z" />
-              </svg>
-              <h3 class="font-display font-bold mb-1.5">شرح سهل وبسيط</h3>
-              <p class="text-mist text-sm leading-6">
-                بلغة بسيطة وأمثلة من الواقع، من غير تعقيد.
-              </p>
-            </div>
-            <div class="reveal reveal-up card-interactive delay-1">
-              <svg
-                width="26"
-                height="26"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#2e9bff"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="mb-4"
+                <div
+                  class="mx-auto flex size-14 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-500"
+                >
+                  <svg class="size-7" aria-hidden="true">
+                    <use href="./sprite.svg#bolt"></use>
+                  </svg>
+                </div>
+                <h3 class="mt-6 text-lg font-extrabold">عملي</h3>
+                <p class="mt-3 text-sm leading-7 text-[var(--color-text-soft)]">
+                  تطبيق مستمر بدل الحفظ النظري.
+                </p>
+              </article>
+            </li>
+
+            <li>
+              <article
+                data-reveal="left"
+                class="glass-card rounded-3xl p-6 text-center transition duration-500 hover:-translate-y-2"
               >
-                <rect x="3" y="4" width="18" height="13" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-                <path d="m9 9 2 2-2 2M14 13h1" />
-              </svg>
-              <h3 class="font-display font-bold mb-1.5">
-                أمثلة وتطبيقات عملية
-              </h3>
-              <p class="text-mist text-sm leading-6">
-                تطبّق كل فكرة بنفسك أول ما تفهمها.
-              </p>
-            </div>
-            <div class="reveal reveal-up card-interactive delay-3">
-              <svg
-                width="26"
-                height="26"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#2e9bff"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="mb-4"
+                <div
+                  class="mx-auto flex size-14 items-center justify-center rounded-2xl bg-violet-500/10 text-violet-500"
+                >
+                  <svg class="size-7" aria-hidden="true">
+                    <use href="./sprite.svg#code"></use>
+                  </svg>
+                </div>
+                <h3 class="mt-6 text-lg font-extrabold">كود حقيقي</h3>
+                <p class="mt-3 text-sm leading-7 text-[var(--color-text-soft)]">
+                  تكتب وتفهم كود قابل للاستخدام.
+                </p>
+              </article>
+            </li>
+
+            <li>
+              <article
+                data-reveal="right"
+                class="glass-card rounded-3xl p-6 text-center transition duration-500 hover:-translate-y-2"
               >
-                <path
-                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                />
-                <path d="M14 2v6h6M9 15l2 2 4-4" />
-              </svg>
-              <h3 class="font-display font-bold mb-1.5">ملفات PDF وملخصات</h3>
-              <p class="text-mist text-sm leading-6">
-                مرجع تراجع منه في أي وقت من غير ما تدور تاني.
-              </p>
-            </div>
-            <div class="reveal reveal-up card-interactive delay-5">
-              <svg
-                width="26"
-                height="26"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#2e9bff"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="mb-4"
+                <div
+                  class="mx-auto flex size-14 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-500"
+                >
+                  <svg class="size-7" aria-hidden="true">
+                    <use href="./sprite.svg#book-open"></use>
+                  </svg>
+                </div>
+                <h3 class="mt-6 text-lg font-extrabold">منهج منظم</h3>
+                <p class="mt-3 text-sm leading-7 text-[var(--color-text-soft)]">
+                  كل مرحلة لها هدف واضح.
+                </p>
+              </article>
+            </li>
+
+            <li>
+              <article
+                data-reveal="left"
+                class="glass-card rounded-3xl p-6 text-center transition duration-500 hover:-translate-y-2"
               >
-                <path d="M4 15v-3a8 8 0 0 1 16 0v3" />
-                <path d="M4 15a2 2 0 0 0 2 2h1v-5H5a1 1 0 0 0-1 1z" />
-                <path d="M20 15a2 2 0 0 1-2 2h-1v-5h1a1 1 0 0 1 1 1z" />
-              </svg>
-              <h3 class="font-display font-bold mb-1.5">
-                دعم فني ومتابعة مستمرة
-              </h3>
-              <p class="text-mist text-sm leading-6">
-                بتتوه في نقطة؟ فيه حد بيرد عليك ويكمل معاك.
-              </p>
-            </div>
-          </div>
+                <div
+                  class="mx-auto flex size-14 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-500"
+                >
+                  <svg class="size-7" aria-hidden="true">
+                    <use href="./sprite.svg#headphones"></use>
+                  </svg>
+                </div>
+                <h3 class="mt-6 text-lg font-extrabold">دعم</h3>
+                <p class="mt-3 text-sm leading-7 text-[var(--color-text-soft)]">
+                  توجيه يساعدك توصل للحل بنفسك.
+                </p>
+              </article>
+            </li>
+          </ul>
         </div>
       </section>
 
-      <section id="contact" class="section-base section-border">
-        <div class="container-base grid md:grid-cols-2 gap-10 sm:gap-12">
-          <div class="reveal reveal-right">
-            <h2
-              class="font-display font-black text-2xl sm:text-3xl lg:text-4xl mb-4"
-            >
-              تواصل معانا
-            </h2>
-            <p class="font-body text-mist leading-8 mb-8 max-w-md">
-              عايز تشترك في الأكواد أو عندك أي سؤال عن المنهج؟ ابعتلنا رسالة على
-              واتساب وهنرد عليك بسرعة.
-            </p>
-
-            <a
-              href="https://wa.me/201145383426"
-              target="_blank"
-              rel="noopener"
-              class="magnetic flex items-center gap-4 rounded-2xl border border-line p-5 mb-4 hover:border-[#25D366]/60 transition-colors"
-            >
-              <span class="glow"></span>
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="relative overflow-hidden py-24 sm:py-32"
+        aria-label="تواصل معنا"
+      >
+        <div class="mx-auto max-w-7xl px-5 sm:px-8">
+          <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div data-reveal="right" class="text-center lg:text-right">
               <span
-                class="relative w-12 h-12 rounded-full bg-[#25D366]/10 flex items-center justify-center shrink-0"
+                class="font-mono text-xs uppercase tracking-[0.25em] text-sky-500"
+                >Contact</span
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
-                  <path
-                    d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.78 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2zm0 18.14h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.26-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.79.97-.14.17-.29.18-.54.06-.25-.12-1.04-.38-1.99-1.22-.73-.66-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.28z"
-                  />
-                </svg>
-              </span>
-              <span class="relative">
-                <span class="block text-xs text-mist">واتساب مباشر</span>
-                <span class="block font-mono font-bold text-lg dir-ltr"
-                  >01145383426</span
-                >
-              </span>
-            </a>
+              <h2
+                class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl"
+              >
+                جاهز تبدأ <span class="gradient-text">رحلتك؟</span>
+              </h2>
+              <p
+                class="mx-auto mt-6 max-w-xl text-base leading-8 text-[var(--color-text-soft)] sm:text-lg lg:mx-0"
+              >
+                ابعت بياناتك ورسالتك، وهنتواصل معاك على WhatsApp عشان نحدد
+                الخطوة المناسبة ليك.
+              </p>
 
-            <a
-              href="https://eng-ehab-elkomy.menassatok.com/"
-              target="_blank"
-              rel="noopener"
-              class="magnetic flex items-center gap-4 rounded-2xl border border-line p-5 hover:border-electric/60 transition-colors"
+              <ul class="mt-8 space-y-4 list-none">
+                <li>
+                  <a
+                    href="https://wa.me/201145383426"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center justify-center lg:justify-start gap-4 group hover:bg-sky-500/5 rounded-2xl p-3 transition"
+                  >
+                    <div
+                      class="flex size-12 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-500"
+                    >
+                      <svg class="size-5" aria-hidden="true">
+                        <use href="./sprite.svg#whatsapp"></use>
+                      </svg>
+                    </div>
+                    <div class="text-center lg:text-right">
+                      <div class="text-xs text-[var(--color-text-muted)]">
+                        WhatsApp
+                      </div>
+                      <div
+                        dir="ltr"
+                        class="font-mono text-sm font-semibold group-hover:text-sky-500"
+                      >
+                        01145383426
+                      </div>
+                    </div>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="https://eng-ehab-elkomy.menassatok.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center justify-center lg:justify-start gap-4 group hover:bg-sky-500/5 rounded-2xl p-3 transition"
+                  >
+                    <div
+                      class="flex size-12 items-center justify-center rounded-2xl bg-violet-500/10 text-violet-500"
+                    >
+                      <svg class="size-5" aria-hidden="true">
+                        <use href="./sprite.svg#globe"></use>
+                      </svg>
+                    </div>
+                    <div class="text-center lg:text-right">
+                      <div class="text-xs text-[var(--color-text-muted)]">
+                        Website
+                      </div>
+                      <div
+                        dir="ltr"
+                        class="font-mono text-sm font-semibold group-hover:text-sky-500"
+                      >
+                        eng-ehab-elkomy.menassatok.com
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div
+              data-reveal="left"
+              class="glass-card rounded-[2rem] p-6 sm:p-8"
             >
-              <span class="glow"></span>
-              <span
-                class="relative w-12 h-12 rounded-full bg-electric/10 flex items-center justify-center shrink-0"
-              >
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#2e9bff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="2" y1="12" x2="22" y2="12" />
-                  <path
-                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              <form id="contact-form" class="space-y-5">
+                <div>
+                  <label
+                    for="name"
+                    class="mb-2 block text-sm font-bold text-center lg:text-right"
+                    >الاسم</label
+                  >
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="اكتب اسمك"
+                    class="form-input text-center lg:text-right"
                   />
-                </svg>
-              </span>
-              <span class="relative">
-                <span class="block text-xs text-mist">الموقع الرسمي</span>
-                <span class="block font-mono font-bold text-sm dir-ltr"
-                  >eng-ehab-elkomy.menassatok.com</span
+                </div>
+
+                <div>
+                  <label
+                    for="phone"
+                    class="mb-2 block text-sm font-bold text-center lg:text-right"
+                    >رقم الهاتف</label
+                  >
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    dir="ltr"
+                    placeholder="01xxxxxxxxx"
+                    class="form-input text-center"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    for="message"
+                    class="mb-2 block text-sm font-bold text-center lg:text-right"
+                    >رسالتك</label
+                  >
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    required
+                    placeholder="حابب تعرف إيه؟"
+                    class="form-input resize-none text-center lg:text-right"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="primary-button flex w-full items-center justify-center gap-3 rounded-2xl px-6 py-4 font-bold"
+                  data-magnetic
                 >
-              </span>
-            </a>
+                  ابعت على WhatsApp
+                  <svg class="size-5" aria-hidden="true">
+                    <use href="./sprite.svg#whatsapp"></use>
+                  </svg>
+                </button>
+              </form>
+            </div>
           </div>
-
-          <form
-            id="contact-form"
-            class="reveal reveal-left rounded-2xl border border-line p-6 sm:p-8 bg-surface/40"
-          >
-            <div class="mb-5">
-              <label for="c-name" class="block text-sm text-mist mb-2"
-                >اسمك</label
-              >
-              <input
-                required
-                type="text"
-                id="c-name"
-                class="form-input"
-                placeholder="اكتب اسمك"
-              />
-            </div>
-            <div class="mb-5">
-              <label for="c-grade" class="block text-sm text-mist mb-2"
-                >الصف الدراسي</label
-              >
-              <select id="c-grade" class="form-input">
-                <option>تانية ثانوي (بكالوريا)</option>
-                <option>غير كده</option>
-              </select>
-            </div>
-            <div class="mb-6">
-              <label for="c-msg" class="block text-sm text-mist mb-2"
-                >رسالتك</label
-              >
-              <textarea
-                id="c-msg"
-                rows="3"
-                class="form-input resize-none"
-                placeholder="عايز أشترك في أكواد المنهج"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              class="magnetic w-full inline-flex items-center justify-center gap-2 rounded-lg bg-electric text-ink font-bold py-3.5 hover:bg-electric-2 transition-colors"
-            >
-              <span class="glow"></span>
-              <span class="relative">ابعت عبر واتساب</span>
-            </button>
-          </form>
         </div>
       </section>
     </main>
 
-    <footer class="border-t border-white/5 py-10">
+    <!-- Footer -->
+    <footer class="border-t border-[var(--color-border)] py-10">
       <div
-        class="container-base flex flex-col sm:flex-row items-center justify-between gap-4"
+        class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-5 text-center sm:flex-row sm:px-8 sm:text-right"
       >
-        <div class="flex items-center gap-2">
-          <span class="font-mono text-electric font-semibold">&lt;/&gt;</span>
-          <span class="font-display font-bold text-sm"
-            >منصة مهندس إيهاب الكومي</span
+        <div class="text-center sm:text-right">
+          <div class="font-bold">م. إيهاب الكومي</div>
+          <div
+            class="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-muted)]"
           >
+            Software Engineer
+          </div>
         </div>
-        <p class="font-mono text-xs text-mist dir-ltr">01145383426</p>
-        <p class="text-xs text-mist">&copy; 2026 جميع الحقوق محفوظة</p>
+        <p class="text-xs text-[var(--color-text-muted)]">
+          Programming • AI • Engineering
+        </p>
+        <a
+          href="#home"
+          class="flex size-11 items-center justify-center rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] text-sky-500 transition hover:-translate-y-1 hover:border-sky-500/30"
+          aria-label="العودة للأعلى"
+        >
+          <svg class="size-5" aria-hidden="true">
+            <use href="./sprite.svg#arrow-up"></use>
+          </svg>
+        </a>
       </div>
     </footer>
 
+    <!-- Back to Top Button -->
     <button
       id="back-to-top"
       type="button"
-      aria-label="Back to top"
-      class="w-11 h-11 rounded-full border border-line bg-ink/90 backdrop-blur flex items-center justify-center hover:border-electric transition-colors"
+      aria-label="العودة للأعلى"
+      class="fixed bottom-24 left-4 z-40 flex size-12 items-center justify-center rounded-2xl border border-[var(--color-border)] bg-slate-900/90 text-sky-400 shadow-2xl backdrop-blur-xl transition duration-300 hover:-translate-y-1 lg:bottom-6 lg:left-6 lg:size-14"
     >
-      <svg
-        width="18"
-        height="18"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M12 19V5M5 12l7-7 7 7" />
+      <svg class="size-5" aria-hidden="true">
+        <use href="./sprite.svg#arrow-up"></use>
       </svg>
     </button>
 
-    <div id="popup-overlay" class="popup-overlay" aria-hidden="true"></div>
+    <!-- Floating WhatsApp Button -->
+    <a
+      href="https://wa.me/201145383426?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%85.%20%D8%A5%D9%8A%D9%87%D8%A7%D8%A8%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B9%D8%B1%D9%81%20%D8%A3%D9%83%D8%AA%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%B3%D8%A7%D8%AA"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-24 right-4 z-40 flex size-12 items-center justify-center rounded-2xl bg-green-500 text-white shadow-2xl transition duration-300 hover:-translate-y-1 hover:bg-green-600 lg:bottom-24 lg:right-6 lg:size-14"
+      aria-label="تواصل عبر واتساب"
+    >
+      <svg class="size-5" aria-hidden="true">
+        <use href="./sprite.svg#whatsapp"></use>
+      </svg>
+    </a>
+
+    <!-- Popup -->
+    <div
+      id="popup"
+      class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/70 p-5 backdrop-blur-md"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="glass-card w-full max-w-md rounded-[2rem] p-8 text-center">
+        <div
+          class="mx-auto flex size-16 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-500"
+        >
+          <svg class="size-7" aria-hidden="true">
+            <use href="./sprite.svg#bolt"></use>
+          </svg>
+        </div>
+        <h2 class="mt-6 text-2xl font-extrabold">أهلاً بيك 👋</h2>
+        <p class="mt-3 text-sm leading-7 text-[var(--color-text-soft)]">
+          جاهز تبدأ رحلتك في البرمجة وتبني مشاريع حقيقية؟
+        </p>
+        <div class="mt-6 flex flex-col gap-3">
+          <a
+            href="https://eng-ehab-elkomy.menassatok.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="primary-button rounded-2xl px-7 py-3 font-bold"
+          >
+            ادخل المنصة التعليمية
+          </a>
+          <button
+            id="popup-close"
+            type="button"
+            class="rounded-2xl border border-[var(--color-border)] px-7 py-3 font-bold text-[var(--color-text-soft)] hover:bg-[var(--color-surface-soft)] transition"
+          >
+            لسه مش دلوقتي
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

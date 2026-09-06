@@ -1,202 +1,311 @@
-function init() {
-  const THEME_KEY = "ehab-elkomy-theme";
-  const root = document.documentElement;
-  const toggleBtn = document.getElementById("theme-toggle");
-  const iconSun = document.getElementById("icon-sun");
-  const iconMoon = document.getElementById("icon-moon");
-  const burger = document.getElementById("burger");
-  const menu = document.getElementById("mobile-menu");
-  const siteNav = document.getElementById("site-nav");
-  const backToTop = document.getElementById("back-to-top");
-  const popupOverlay = document.getElementById("popup-overlay");
+const elements = {
+  html: document.documentElement,
+  header: document.querySelector("#site-header"),
+  themeToggle: document.querySelector("#theme-toggle"),
+  themeIconSun: document.querySelector("#theme-icon-sun"),
+  themeIconMoon: document.querySelector("#theme-icon-moon"),
+  navLinks: document.querySelectorAll("[data-nav-link]"),
+  mobileNavLinks: document.querySelectorAll("[data-mobile-nav-link]"),
+  revealElements: document.querySelectorAll("[data-reveal]"),
+  magneticElements: document.querySelectorAll("[data-magnetic]"),
+  spotlight: document.querySelector("#spotlight"),
+  cursorGlow: document.querySelector("[data-cursor-glow]"),
+  cursorDot: document.querySelector("[data-cursor-dot]"),
+  hero: document.querySelector("#home"),
+  backToTop: document.querySelector("#back-to-top"),
+  contactForm: document.querySelector("#contact-form"),
+  popup: document.querySelector("#popup"),
+  popupClose: document.querySelector("#popup-close"),
+};
 
-  const applyTheme = (theme) => {
-    if (theme === "light") {
-      root.setAttribute("data-theme", "light");
-      iconSun.classList.remove("hidden");
-      iconMoon.classList.add("hidden");
-      toggleBtn.setAttribute("aria-pressed", "true");
-    } else {
-      root.removeAttribute("data-theme");
-      iconSun.classList.add("hidden");
-      iconMoon.classList.remove("hidden");
-      toggleBtn.setAttribute("aria-pressed", "false");
-    }
+const isLightMode = () => elements.html.classList.contains("light");
+const isDesktop = () => window.innerWidth >= 1024;
+
+const updateThemeUI = () => {
+  const light = isLightMode();
+  elements.themeIconSun?.classList.toggle("hidden", !light);
+  elements.themeIconMoon?.classList.toggle("hidden", light);
+  elements.themeToggle?.setAttribute(
+    "aria-label",
+    light ? "تفعيل الوضع الداكن" : "تفعيل الوضع الفاتح",
+  );
+  elements.html.style.colorScheme = light ? "light" : "dark";
+};
+
+const applyTheme = (theme) => {
+  const isLight = theme === "light";
+  elements.html.classList.toggle("light", isLight);
+  elements.html.classList.toggle("dark", !isLight);
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+  updateThemeUI();
+};
+
+const setupTheme = () => {
+  const savedTheme = localStorage.getItem("theme");
+  const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches
+    ? "light"
+    : "dark";
+  applyTheme(savedTheme || systemTheme);
+  elements.themeToggle?.addEventListener("click", () => {
+    applyTheme(isLightMode() ? "dark" : "light");
+  });
+};
+
+const setupCursorEffects = () => {
+  if (!elements.spotlight || !isDesktop()) return;
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let frame = 0;
+
+  const render = () => {
+    elements.html.style.setProperty("--mouse-x", `${mouseX}px`);
+    elements.html.style.setProperty("--mouse-y", `${mouseY}px`);
+    frame = 0;
   };
 
-  const savedTheme = localStorage.getItem(THEME_KEY);
-  applyTheme(savedTheme === "light" ? "light" : "dark");
-
-  toggleBtn.addEventListener("click", () => {
-    const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-    applyTheme(next);
-    localStorage.setItem(THEME_KEY, next);
-  });
-
-  const openMenu = () => {
-    menu.classList.add("open");
-    burger.setAttribute("aria-expanded", "true");
-  };
-
-  const closeMenu = () => {
-    menu.classList.remove("open");
-    burger.setAttribute("aria-expanded", "false");
-  };
-
-  burger.addEventListener("click", () => {
-    if (menu.classList.contains("open")) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  document.querySelectorAll(".nav-mobile-link").forEach((a) => {
-    a.addEventListener("click", closeMenu);
-  });
-
-  document.addEventListener("click", (e) => {
-    if (
-      menu.classList.contains("open") &&
-      !menu.contains(e.target) &&
-      !burger.contains(e.target)
-    ) {
-      closeMenu();
-    }
-  });
-
-  const spot = document.getElementById("spotlight");
   window.addEventListener(
-    "mousemove",
-    (e) => {
-      spot.style.setProperty("--x", e.clientX + "px");
-      spot.style.setProperty("--y", e.clientY + "px");
+    "pointermove",
+    (event) => {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+      if (!frame) {
+        frame = requestAnimationFrame(render);
+      }
     },
     { passive: true },
   );
 
-  document.querySelectorAll(".magnetic").forEach((btn) => {
-    btn.addEventListener("mousemove", (e) => {
-      const r = btn.getBoundingClientRect();
-      btn.style.setProperty("--mx", e.clientX - r.left + "px");
-      btn.style.setProperty("--my", e.clientY - r.top + "px");
+  document.body.style.cursor = "none";
+  document.querySelectorAll("a, button").forEach((el) => {
+    el.style.cursor = "none";
+  });
+};
+
+const setupMagneticElements = () => {
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+
+  if (reducedMotion || coarsePointer) return;
+
+  elements.magneticElements.forEach((element) => {
+    element.style.setProperty("--magnetic-x", "0px");
+    element.style.setProperty("--magnetic-y", "0px");
+
+    element.addEventListener("pointermove", (event) => {
+      const rect = element.getBoundingClientRect();
+      const x = event.clientX - (rect.left + rect.width / 2);
+      const y = event.clientY - (rect.top + rect.height / 2);
+      element.style.setProperty("--magnetic-x", `${x * 0.045}px`);
+      element.style.setProperty("--magnetic-y", `${y * 0.045}px`);
+    });
+
+    element.addEventListener("pointerleave", () => {
+      element.style.setProperty("--magnetic-x", "0px");
+      element.style.setProperty("--magnetic-y", "0px");
     });
   });
+};
 
-  const floaters = document.querySelectorAll(".float-shape");
-  const hero = document.getElementById("hero");
-  hero.addEventListener(
-    "mousemove",
-    (e) => {
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight / 2;
-      const dx = (e.clientX - cx) / cx;
-      const dy = (e.clientY - cy) / cy;
-      floaters.forEach((f) => {
-        const depth = parseFloat(f.getAttribute("data-depth")) || 20;
-        f.style.transform = `translate(${dx * depth * -1}px, ${dy * depth * -1}px)`;
-      });
-    },
-    { passive: true },
-  );
+const setupRevealObserver = () => {
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
-  const io = new IntersectionObserver(
+  if (reducedMotion) {
+    elements.revealElements.forEach((element) =>
+      element.classList.add("is-visible"),
+    );
+    return;
+  }
+
+  const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-          io.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.18, rootMargin: "0px 0px -60px 0px" },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
   );
 
-  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  elements.revealElements.forEach((element, index) => {
+    element.style.transitionDelay = `${Math.min(index % 5, 4) * 70}ms`;
+    observer.observe(element);
+  });
+};
 
-  const navLinks = Array.from(
-    document.querySelectorAll('.nav-link[href^="#"]'),
-  );
-  const sections = navLinks
-    .map((a) => document.querySelector(a.getAttribute("href")))
-    .filter(Boolean);
+const setupHeroParallax = () => {
+  if (!elements.hero || !isDesktop()) return;
+
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  if (reducedMotion) return;
+
+  let frame = 0;
+
+  const update = () => {
+    const rect = elements.hero.getBoundingClientRect();
+    const progress = Math.max(-1, Math.min(1, rect.top / window.innerHeight));
+
+    elements.magneticElements.forEach((element) => {
+      if (!element.closest("#home")) return;
+      element.style.setProperty("--parallax-y", `${progress * -18}px`);
+    });
+
+    frame = 0;
+  };
 
   window.addEventListener(
     "scroll",
     () => {
-      siteNav.classList.toggle("nav-scrolled", window.scrollY > 8);
-      backToTop.classList.toggle("show", window.scrollY > 480);
+      if (!frame) {
+        frame = requestAnimationFrame(update);
+      }
     },
     { passive: true },
   );
 
-  const sectionIO = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const id = "#" + entry.target.id;
-        const link = navLinks.find((a) => a.getAttribute("href") === id);
-        if (!link) return;
-        if (entry.isIntersecting) {
-          navLinks.forEach((a) => a.classList.remove("active"));
-          link.classList.add("active");
-        }
-      });
-    },
-    { threshold: 0.4 },
-  );
+  update();
+};
 
-  sections.forEach((s) => sectionIO.observe(s));
+const updateHeader = () => {
+  if (!elements.header) return;
+  const scrolled = window.scrollY > 25;
+  elements.header.classList.toggle("shadow-2xl", scrolled);
+};
 
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+const setupHeaderScroll = () => {
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  updateHeader();
+};
 
-  const form = document.getElementById("contact-form");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("c-name").value.trim();
-    const grade = document.getElementById("c-grade").value;
-    const msg = document.getElementById("c-msg").value.trim();
-    const text = `اسمي ${name} - ${grade}${msg ? "\n" + msg : "\nعايز أعرف تفاصيل الاشتراك في الأكواد."}`;
-    window.open(
-      "https://wa.me/201145383426?text=" + encodeURIComponent(text),
-      "_blank",
-    );
-  });
+const setActiveNavLink = () => {
+  const sections = [...elements.navLinks]
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
 
-  const openPopup = (contentHTML) => {
-    popupOverlay.innerHTML = `<div class="popup-content">${contentHTML}</div>`;
-    popupOverlay.classList.add("active");
-    popupOverlay.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  };
+  const scrollPosition = window.scrollY + window.innerHeight * 0.3;
+  let current = "";
 
-  const closePopup = () => {
-    popupOverlay.classList.remove("active");
-    popupOverlay.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-    setTimeout(() => {
-      popupOverlay.innerHTML = "";
-    }, 300);
-  };
-
-  popupOverlay.addEventListener("click", (e) => {
-    if (e.target === popupOverlay) closePopup();
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      if (popupOverlay.classList.contains("active")) {
-        closePopup();
-      }
-      if (menu.classList.contains("open")) {
-        closeMenu();
-      }
+  sections.forEach((section) => {
+    if (section.offsetTop <= scrollPosition) {
+      current = `#${section.id}`;
     }
   });
 
-  window.openPopup = openPopup;
-  window.closePopup = closePopup;
-}
+  elements.navLinks.forEach((link) => {
+    const active = link.getAttribute("href") === current;
+    link.classList.toggle("bg-sky-500/10", active);
+    link.classList.toggle("text-sky-500", active);
+  });
+};
 
-init();
+const setActiveMobileNavLink = () => {
+  const sections = [...elements.mobileNavLinks]
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+
+  const scrollPosition = window.scrollY + window.innerHeight * 0.3;
+  let current = "";
+
+  sections.forEach((section) => {
+    if (section.offsetTop <= scrollPosition) {
+      current = `#${section.id}`;
+    }
+  });
+
+  elements.mobileNavLinks.forEach((link) => {
+    const active = link.getAttribute("href") === current;
+    link.classList.toggle("active", active);
+    link.classList.toggle("text-sky-500", active);
+    link.classList.toggle("bg-sky-500/10", active);
+  });
+};
+
+const setupActiveNavigation = () => {
+  const updateActive = () => {
+    setActiveNavLink();
+    setActiveMobileNavLink();
+  };
+
+  window.addEventListener("scroll", updateActive, { passive: true });
+  updateActive();
+};
+
+const setupBackToTop = () => {
+  if (!elements.backToTop) return;
+
+  const update = () => {
+    const shouldShow = window.scrollY > 500;
+    elements.backToTop.classList.toggle("opacity-0", !shouldShow);
+    elements.backToTop.classList.toggle("pointer-events-none", !shouldShow);
+  };
+
+  window.addEventListener("scroll", update, { passive: true });
+
+  elements.backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  update();
+};
+
+const setupContactForm = () => {
+  if (!elements.contactForm) return;
+
+  elements.contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(elements.contactForm);
+    const name = formData.get("name") || "";
+    const phone = formData.get("phone") || "";
+    const message = formData.get("message") || "";
+
+    const text = [
+      "السلام عليكم م. إيهاب،",
+      "",
+      `الاسم: ${name}`,
+      `رقم الهاتف: ${phone}`,
+      `الرسالة: ${message}`,
+    ].join("\n");
+
+    const whatsappUrl = `https://wa.me/201145383426?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  });
+};
+
+const setupPopup = () => {
+  if (!elements.popup) return;
+
+  const closePopup = () => {
+    elements.popup.classList.add("hidden");
+  };
+
+  elements.popupClose?.addEventListener("click", closePopup);
+
+  elements.popup.addEventListener("click", (event) => {
+    if (event.target === elements.popup) {
+      closePopup();
+    }
+  });
+};
+
+const init = () => {
+  setupTheme();
+  setupCursorEffects();
+  setupMagneticElements();
+  setupRevealObserver();
+  setupHeroParallax();
+  setupHeaderScroll();
+  setupActiveNavigation();
+  setupBackToTop();
+  setupContactForm();
+  setupPopup();
+};
+
+document.addEventListener("DOMContentLoaded", init);
