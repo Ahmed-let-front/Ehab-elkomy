@@ -69,8 +69,8 @@ const setupCursorEffects = () => {
   let currentY = window.innerHeight / 2;
 
   const render = () => {
-    currentX += (mouseX - currentX) * 0.15;
-    currentY += (mouseY - currentY) * 0.15;
+    currentX += (mouseX - currentX) * 0.12;
+    currentY += (mouseY - currentY) * 0.12;
 
     elements.html.style.setProperty("--mouse-x", `${currentX}px`);
     elements.html.style.setProperty("--mouse-y", `${currentY}px`);
@@ -117,8 +117,8 @@ const setupMagneticElements = () => {
       const rect = element.getBoundingClientRect();
       const x = event.clientX - (rect.left + rect.width / 2);
       const y = event.clientY - (rect.top + rect.height / 2);
-      element.style.setProperty("--magnetic-x", `${x * 0.045}px`);
-      element.style.setProperty("--magnetic-y", `${y * 0.045}px`);
+      element.style.setProperty("--magnetic-x", `${x * 0.04}px`);
+      element.style.setProperty("--magnetic-y", `${y * 0.04}px`);
     });
 
     element.addEventListener("pointerleave", () => {
@@ -152,18 +152,18 @@ const setupPageEntrance = () => {
 
   if (elements.header) {
     elements.header.style.opacity = "0";
-    elements.header.style.transform = "translateY(-100px)";
+    elements.header.style.transform = "translateY(-80px)";
     elements.header.style.transition =
-      "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
+      "opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)";
   }
 
   heroElements.forEach((element, index) => {
     element.classList.add("is-visible");
     element.style.opacity = "0";
-    element.style.transform = "translate3d(0, 50px, 0) scale(0.95)";
+    element.style.transform = "translate3d(0, 40px, 0) scale(0.96)";
     element.style.transition =
-      "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
-    element.style.transitionDelay = `${index * 150}ms`;
+      "opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)";
+    element.style.transitionDelay = `${index * 100}ms`;
   });
 
   requestAnimationFrame(() => {
@@ -178,7 +178,7 @@ const setupPageEntrance = () => {
       setTimeout(() => {
         element.style.opacity = "1";
         element.style.transform = "translate3d(0, 0, 0) scale(1)";
-      }, 300);
+      }, 200);
     });
 
     setTimeout(() => {
@@ -193,7 +193,7 @@ const setupPageEntrance = () => {
         element.style.transition = "";
         element.style.transitionDelay = "";
       });
-    }, 4000);
+    }, 2000);
   });
 };
 
@@ -217,12 +217,12 @@ const setupRevealObserver = () => {
         observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+    { threshold: 0.08, rootMargin: "0px 0px -20px 0px" },
   );
 
   elements.revealElements.forEach((element, index) => {
     if (element.closest("#home")) return;
-    element.style.transitionDelay = `${Math.min(index % 5, 4) * 70}ms`;
+    element.style.transitionDelay = `${Math.min(index % 3, 2) * 50}ms`;
     observer.observe(element);
   });
 };
@@ -243,7 +243,7 @@ const setupHeroParallax = () => {
 
     elements.magneticElements.forEach((element) => {
       if (!element.closest("#home")) return;
-      element.style.setProperty("--parallax-y", `${progress * -18}px`);
+      element.style.setProperty("--parallax-y", `${progress * -15}px`);
     });
 
     frame = 0;
