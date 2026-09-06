@@ -57,11 +57,24 @@ const setupCursorEffects = () => {
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
   let frame = 0;
+  let currentX = window.innerWidth / 2;
+  let currentY = window.innerHeight / 2;
 
   const render = () => {
-    elements.html.style.setProperty("--mouse-x", `${mouseX}px`);
-    elements.html.style.setProperty("--mouse-y", `${mouseY}px`);
+    // Smooth follow
+    currentX += (mouseX - currentX) * 0.15;
+    currentY += (mouseY - currentY) * 0.15;
+
+    elements.html.style.setProperty("--mouse-x", `${currentX}px`);
+    elements.html.style.setProperty("--mouse-y", `${currentY}px`);
+
     frame = 0;
+  };
+
+  const animate = () => {
+    if (!frame) {
+      frame = requestAnimationFrame(render);
+    }
   };
 
   window.addEventListener(
@@ -69,17 +82,20 @@ const setupCursorEffects = () => {
     (event) => {
       mouseX = event.clientX;
       mouseY = event.clientY;
-      if (!frame) {
-        frame = requestAnimationFrame(render);
-      }
+      animate();
     },
     { passive: true },
   );
 
-  document.body.style.cursor = "none";
-  document.querySelectorAll("a, button").forEach((el) => {
-    el.style.cursor = "none";
-  });
+  // Start animation loop
+  const startLoop = () => {
+    render();
+    requestAnimationFrame(startLoop);
+  };
+  startLoop();
+
+  // Don't hide cursor - keep it visible
+  // Just the glow follows behind
 };
 
 const setupMagneticElements = () => {
@@ -109,6 +125,66 @@ const setupMagneticElements = () => {
   });
 };
 
+const setupPageEntrance = () => {
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  if (reducedMotion) return;
+
+  // Header from top - 3 seconds duration
+  if (elements.header) {
+    elements.header.style.opacity = "0";
+    elements.header.style.transform = "translateY(-100px)";
+    elements.header.style.transition =
+      "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
+  }
+
+  // Hero content from right - 3 seconds duration
+  const heroContent = elements.hero?.querySelector('[data-reveal="right"]');
+  if (heroContent) {
+    heroContent.style.opacity = "0";
+    heroContent.style.transform = "translate3d(150px, 0, 0) scale(0.9)";
+    heroContent.style.transition =
+      "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
+  }
+
+  // Hero image from left - 3 seconds duration
+  const heroImage = elements.hero?.querySelector('[data-reveal="left"]');
+  if (heroImage) {
+    heroImage.style.opacity = "0";
+    heroImage.style.transform = "translate3d(-150px, 0, 0) scale(0.9)";
+    heroImage.style.transition =
+      "opacity 3s cubic-bezier(0.16, 1, 0.3, 1), transform 3s cubic-bezier(0.16, 1, 0.3, 1)";
+  }
+
+  // Trigger animations with delays
+  requestAnimationFrame(() => {
+    // Header animation - starts immediately
+    if (elements.header) {
+      setTimeout(() => {
+        elements.header.style.opacity = "1";
+        elements.header.style.transform = "translateY(0)";
+      }, 100);
+    }
+
+    // Hero content animation - starts after 500ms
+    if (heroContent) {
+      setTimeout(() => {
+        heroContent.style.opacity = "1";
+        heroContent.style.transform = "translate3d(0, 0, 0) scale(1)";
+      }, 500);
+    }
+
+    // Hero image animation - starts after 800ms
+    if (heroImage) {
+      setTimeout(() => {
+        heroImage.style.opacity = "1";
+        heroImage.style.transform = "translate3d(0, 0, 0) scale(1)";
+      }, 800);
+    }
+  });
+};
+
 const setupRevealObserver = () => {
   const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
@@ -133,6 +209,7 @@ const setupRevealObserver = () => {
   );
 
   elements.revealElements.forEach((element, index) => {
+    if (element.closest("#home")) return; // Hero elements already animated
     element.style.transitionDelay = `${Math.min(index % 5, 4) * 70}ms`;
     observer.observe(element);
   });
@@ -299,6 +376,7 @@ const init = () => {
   setupTheme();
   setupCursorEffects();
   setupMagneticElements();
+  setupPageEntrance();
   setupRevealObserver();
   setupHeroParallax();
   setupHeaderScroll();
