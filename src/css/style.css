@@ -284,14 +284,13 @@
   }
 
   .mobile-nav-item {
-    @apply flex items-center justify-center size-11 rounded-full text-[var(--color-text-muted)] transition-all duration-300;
+    @apply flex items-center justify-center size-11 rounded-full text-[var(--color-text-muted)] transition-colors duration-300;
   }
 
   .mobile-nav-item:hover,
   .mobile-nav-item.active {
-    @apply text-sky-500 bg-sky-500/10 scale-110;
+    @apply text-sky-500 bg-sky-500/10;
   }
-
   .mobile-nav-item svg {
     @apply size-5;
   }
